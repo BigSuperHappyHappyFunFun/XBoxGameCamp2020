@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class VolumeSlider : MonoBehaviour
 {
     public AnimationCurve volumeCurve;
+    public GameSettings settings;
     public AudioMixer mixer;
     public Slider slider;
     public float volumeMinDB = -80f;
@@ -19,8 +20,9 @@ public class VolumeSlider : MonoBehaviour
 
     private void OnEnable()
     {
-        slider.onValueChanged.AddListener(AdjustVolume);
+        slider.value = settings.volume;
         AdjustVolume(slider.value);
+        slider.onValueChanged.AddListener(AdjustVolume);
     }
 
     private void OnDisable()
@@ -28,9 +30,10 @@ public class VolumeSlider : MonoBehaviour
         slider.onValueChanged.RemoveListener(AdjustVolume);
     }
 
-    private void AdjustVolume(float newVolume)
+    private void AdjustVolume(float sliderValue)
     {
-        var volume2db = volumeMinDB + (volumeCurve.Evaluate(newVolume) * -volumeMinDB);
+        settings.volume = sliderValue;
+        var volume2db = volumeMinDB + (volumeCurve.Evaluate(sliderValue) * -volumeMinDB);
         mixer.SetFloat("MasterVolume", volume2db);
     }
 }

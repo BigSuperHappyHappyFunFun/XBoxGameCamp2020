@@ -335,6 +335,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  settings: {fileID: 11400000, guid: 15c82c8fd02dd204ab8558bd19910bbf, type: 2}
   mixer: {fileID: 24100000, guid: 8211bd0a606d8cd469b8277eb8633937, type: 2}
   slider: {fileID: 8759433663834448189}
   volumeMinDB: -80
