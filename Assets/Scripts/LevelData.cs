@@ -27,11 +27,15 @@ public class LevelData : MonoBehaviour
                 continue;
 
             var buttonRequest = new ButtonRequest();
-            buttonRequest.start = System.Convert.ToSingle(buttonRequestStrings[0]);
-            buttonRequest.end = System.Convert.ToSingle(buttonRequestStrings[1]);
-            buttonRequest.button = buttonRequestStrings[2];
-            buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} - {buttonRequest.end}";
-            buttonRequests.Add(buttonRequest);
+            try
+            {
+                buttonRequest.start = System.Convert.ToSingle(buttonRequestStrings[0]);
+                buttonRequest.end = System.Convert.ToSingle(buttonRequestStrings[1]);
+                buttonRequest.button = buttonRequestStrings[2];
+                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} - {buttonRequest.end}";
+                buttonRequests.Add(buttonRequest);
+            }
+            catch { }
         }
     }
 }

@@ -14,7 +14,7 @@ public class ChangeButton : MonoBehaviour
     IEnumerator DisplayButton(LevelData levelData, ButtonDisplay buttonDisplay)
     {
         var time = 0f;
-        for (var i = 0; i < levelData.buttonRequests.Count; i = i)
+        for (var i = 0; i < levelData.buttonRequests.Count; )
         {
             var buttonRequest = levelData.buttonRequests[i];
             if (buttonRequest.start < time)
