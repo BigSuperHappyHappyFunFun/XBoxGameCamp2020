@@ -10,6 +10,7 @@ public class ButtonRequestSpawn : MonoBehaviour
     public Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
     public List<Sprite> spriteList = new List<Sprite>();
     public GameObject buttonRequestPrefab;
+    public InputChecker inputChecker;
     public int index = 0;
     public float time = 0;
 
@@ -43,6 +44,8 @@ public class ButtonRequestSpawn : MonoBehaviour
             buttonRequestMove.speed = buttonRequest.speed;
             buttonRequestSprite.sprite = sprites[buttonRequest.button];
             buttonRequestDelete.spawnPosition = spawn.position;
+            buttonRequestGameObject.name = buttonRequestSprite.sprite.name;
+            inputChecker.buttonRequests.Add(buttonRequestGameObject);
             index++;
         }
     }
