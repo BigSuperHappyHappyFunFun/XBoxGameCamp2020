@@ -18,17 +18,8 @@ public class Main : MonoBehaviour
         DontDestroyOnLoad(singleton);
     }
 
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey("Volume"))
-            settings.volume = PlayerPrefs.GetFloat("Volume");
-    }
-
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("Volume", settings.volume);
-        PlayerPrefs.Save();
-    }
+    private void Awake() => settings.Awake();
+    private void OnDestroy() => settings.OnDestroy();
 
     public void LoadScene(string name)
     {
