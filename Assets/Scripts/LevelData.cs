@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GoogleSheetsToUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,24 +20,37 @@ public class LevelData : MonoBehaviour
     public List<ButtonRequest> buttonRequests;
     public UnityEvent levelLoaded;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        var levelText = "";
         if (level)
         {
-            levelText = level.text;
+            levelLoaded.Invoke();
+            LoadLevel(level.text);
         }
         else
         {
-            using(var www = new WWW("https://docs.google.com/spreadsheets/d/e/2PACX-1vRUFB4LsAxD9P7q6MeiWFO7PNKL5EoH817Tf8ouyCkUUZ5lQI2K4F8zgcPDJzCpFlmlJS5rrh_T8U2t/pub?output=csv"))
-            {
-                yield return www;
-                levelText = www.text;
-            }
+            var search = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", "Sheet1");
+            SpreadsheetManager.Read(search, GetLevelText);
         }
+    }
 
-        levelLoaded.Invoke();
+    private void GetLevelText(GstuSpreadSheet sheet)
+    {
+        var levelText = "";
+        foreach (var row in sheet.rows.primaryDictionary.Values)
+        {
+            for (var i = 0; i < row.Count; i++)
+            {
+                var cell = row[i];
+                levelText += i == 0 ? cell.value : "," + cell.value;
+            }
+            levelText += "\n";
+        }
+        LoadLevel(levelText);
+    }
 
+    private void LoadLevel(string levelText)
+    {
         var lines = levelText.Split('\n');
         for (var i = 1; i < lines.Length; i++)
         {
@@ -57,5 +71,6 @@ public class LevelData : MonoBehaviour
             }
             catch { }
         }
+        levelLoaded.Invoke();
     }
 }
