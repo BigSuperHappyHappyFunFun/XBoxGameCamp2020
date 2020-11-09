@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelData : MonoBehaviour
 {
@@ -16,10 +17,27 @@ public class LevelData : MonoBehaviour
 
     public TextAsset level;
     public List<ButtonRequest> buttonRequests;
+    public UnityEvent levelLoaded;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        var lines = level.text.Split('\n');
+        var levelText = "";
+        if (level)
+        {
+            levelText = level.text;
+        }
+        else
+        {
+            using(var www = new WWW("https://docs.google.com/spreadsheets/d/e/2PACX-1vRUFB4LsAxD9P7q6MeiWFO7PNKL5EoH817Tf8ouyCkUUZ5lQI2K4F8zgcPDJzCpFlmlJS5rrh_T8U2t/pub?output=csv"))
+            {
+                yield return www;
+                levelText = www.text;
+            }
+        }
+
+        levelLoaded.Invoke();
+
+        var lines = levelText.Split('\n');
         for (var i = 1; i < lines.Length; i++)
         {
             var buttonRequestStrings = lines[i].Split(',');

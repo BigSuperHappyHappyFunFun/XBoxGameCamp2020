@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LevelGoogleSheet.unity
+    guid: 40cb155a06c2c3d46a746dfbfc55e69a
   m_configObjects: {}
