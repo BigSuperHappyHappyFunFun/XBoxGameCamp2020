@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputChecker : MonoBehaviour
 {
+    public LocalInput localInput;
     public List<GameObject> buttonRequests = new List<GameObject>();
     public float bestThreshold = 0.1f;
     public float betterThreshold = 0.2f;
@@ -33,12 +34,12 @@ public class InputChecker : MonoBehaviour
 
     private void Update()
     {
-        pressA = Input.GetKeyDown(KeyCode.A);
-        pressB = Input.GetKeyDown(KeyCode.B);
-        pressX = Input.GetKeyDown(KeyCode.X);
-        pressY = Input.GetKeyDown(KeyCode.Y);
-        pressL = Input.GetKeyDown(KeyCode.L);
-        pressR = Input.GetKeyDown(KeyCode.R);
+        pressA = localInput.pressA;
+        pressB = localInput.pressB;
+        pressX = localInput.pressX;
+        pressY = localInput.pressY;
+        pressL = localInput.pressL;
+        pressR = localInput.pressR;
         pressAny = pressA || pressB || pressX || pressY || pressL || pressR;
         closestButtonRequest = GetClosestButtonRequest();
 
