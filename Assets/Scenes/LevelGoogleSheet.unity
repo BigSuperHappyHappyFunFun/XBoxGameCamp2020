@@ -638,7 +638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.999992, y: -0.0000076293945}
+  m_AnchoredPosition: {x: -49.999992, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390962674
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!224 &435455245 stripped
@@ -1900,7 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1281182593
@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1450587286
@@ -2348,7 +2348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.999992, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 49.999992, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617691380
@@ -2444,7 +2444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1649560100
@@ -2877,7 +2877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1815452928
@@ -3272,11 +3272,11 @@ RectTransform:
   m_Father: {fileID: 2011511626}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 396, y: -168}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -50, y: 30}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!1 &1974790085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,7 +3363,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4179893
+  orthographic size: 7.111111
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3726,7 +3726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a3d5c9a5f48141955a8809850a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerDown:
+  onPointerDown:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &8759433662488886298
