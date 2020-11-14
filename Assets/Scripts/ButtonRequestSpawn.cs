@@ -22,6 +22,10 @@ public class ButtonRequestSpawn : MonoBehaviour
         sprites.Add("Y", spriteList[3]);
         sprites.Add("L", spriteList[4]);
         sprites.Add("R", spriteList[5]);
+        sprites.Add("Up", spriteList[6]);
+        sprites.Add("Down", spriteList[7]);
+        sprites.Add("Left", spriteList[8]);
+        sprites.Add("Right", spriteList[9]);
     }
 
     private void Update()

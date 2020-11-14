@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputChecker : MonoBehaviour
 {
-    public LocalInput localInput;
+    public GameInput input;
     public List<GameObject> buttonRequests = new List<GameObject>();
     public float bestThreshold = 0.1f;
     public float betterThreshold = 0.2f;
@@ -24,26 +24,15 @@ public class InputChecker : MonoBehaviour
     public Color wrongColor = Color.red;
     public Color missColor = Color.red;
     
-    private bool pressA;
-    private bool pressB;
-    private bool pressX;
-    private bool pressY;
-    private bool pressL;
-    private bool pressR;
-    private bool pressAny;
-
     private void Update()
     {
-        pressA = localInput.pressA;
-        pressB = localInput.pressB;
-        pressX = localInput.pressX;
-        pressY = localInput.pressY;
-        pressL = localInput.pressL;
-        pressR = localInput.pressR;
-        pressAny = pressA || pressB || pressX || pressY || pressL || pressR;
+        var anyPressed = input.buttonUpPressed
+            || input.buttonDownPressed
+            || input.buttonLeftPressed
+            || input.buttonRightPressed;
         closestButtonRequest = GetClosestButtonRequest();
 
-        if (pressAny && closestButtonRequest)
+        if (anyPressed && closestButtonRequest)
         {
             var distance = dist(closestButtonRequest, transform);
             if (distance <= bestThreshold)
@@ -112,12 +101,10 @@ public class InputChecker : MonoBehaviour
     private bool IsCorrectButton()
     {
         var name = closestButtonRequest.name;
-        if (name == "buttonA") return pressA;
-        if (name == "buttonB") return pressB;
-        if (name == "buttonX") return pressX;
-        if (name == "buttonY") return pressY;
-        if (name == "buttonL") return pressL;
-        if (name == "buttonR") return pressR;
+        if (name == "arrowUp") return input.buttonUpPressed;
+        if (name == "arrowDown") return input.buttonDownPressed;
+        if (name == "arrowLeft") return input.buttonLeftPressed;
+        if (name == "arrowRight") return input.buttonRightPressed;
         return false;
     }
 

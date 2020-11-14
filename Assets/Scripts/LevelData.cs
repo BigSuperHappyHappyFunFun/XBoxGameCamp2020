@@ -63,10 +63,10 @@ public class LevelData : MonoBehaviour
             try
             {
                 buttonRequest.start = System.Convert.ToSingle(buttonRequestStrings[0]);
-                buttonRequest.end = System.Convert.ToSingle(buttonRequestStrings[1]);
+                //buttonRequest.end = System.Convert.ToSingle(buttonRequestStrings[1]);
                 buttonRequest.button = buttonRequestStrings[2];
                 buttonRequest.speed = System.Convert.ToSingle(buttonRequestStrings[3]);
-                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} - {buttonRequest.end}";
+                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start}";// - {buttonRequest.end}";
                 buttonRequests.Add(buttonRequest);
             }
             catch { }
