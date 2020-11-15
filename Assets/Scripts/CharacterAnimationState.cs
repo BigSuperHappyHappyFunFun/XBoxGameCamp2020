@@ -1,41 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterAnimationState : MonoBehaviour
 {
     public Animator animator;
     public float crossFadeTime = 0.5f;
 
-    public bool triggerSuccess = false;
-    public bool triggerFail = false;
+    public int numberOfSuccesses = 3;
+    public int numberOfFailures = 2;
+
+    public int successIndex = 0;
+    public int failureIndex = 0;
+
+    public UnityEvent succeeded;
+    public UnityEvent failed;
 
     private void OnValidate()
     {
         if (!animator) animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void PlaySuccess()
     {
-        if (triggerSuccess)
-        {
-            TriggerSuccess();
-            triggerSuccess = false;
-        }
-        if (triggerFail)
-        {
-            TriggerFail();
-            triggerFail = false;
-        }
+        AnimatorCrossFade("Success");
+        succeeded.Invoke();
     }
 
-    public void TriggerSuccess()
+    public void PlayFailure()
     {
-        animator.CrossFade("Success", crossFadeTime, 0, 0);
+        AnimatorCrossFade("Failure");
+        failed.Invoke();
     }
 
-    public void TriggerFail()
+    public void PlaySuccessWrap()
     {
-        animator.CrossFade("Fail", crossFadeTime, 0, 0);
+        var animationName = $"Success {successIndex}";
+        AnimatorCrossFade(animationName);
+        successIndex = (successIndex + 1) % numberOfSuccesses;
+        succeeded.Invoke();
+    }
+
+    public void PlayFailureWrap()
+    {
+        var animationName = $"Failure {failureIndex}";
+        AnimatorCrossFade(animationName);
+        failureIndex = (failureIndex + 1) % numberOfFailures;
+        failed.Invoke();
+    }
+
+    private void AnimatorCrossFade(string animationName)
+    {
+        animator.CrossFade(animationName, crossFadeTime, 0, 0);
     }
 }

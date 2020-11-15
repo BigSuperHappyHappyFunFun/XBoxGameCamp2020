@@ -41,13 +41,13 @@ public class InputChecker : MonoBehaviour
                 {
                     bestCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = bestColor;
-                    characterAnimationState.triggerSuccess = true;
+                    characterAnimationState.PlaySuccessWrap();
                 }
                 else
                 {
                     wrongButtonCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
-                    characterAnimationState.triggerFail = true;
+                    characterAnimationState.PlayFailureWrap();
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
@@ -57,13 +57,13 @@ public class InputChecker : MonoBehaviour
                 {
                     betterCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = betterColor;
-                    characterAnimationState.triggerSuccess = true;
+                    characterAnimationState.PlaySuccessWrap();
                 }
                 else
                 {
                     wrongButtonCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
-                    characterAnimationState.triggerFail = true;
+                    characterAnimationState.PlayFailureWrap();
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
@@ -73,13 +73,13 @@ public class InputChecker : MonoBehaviour
                 {
                     goodCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = goodColor;
-                    characterAnimationState.triggerSuccess = true;
+                    characterAnimationState.PlaySuccessWrap();
                 }
                 else
                 {
                     wrongButtonCount++;
                     closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
-                    characterAnimationState.triggerFail = true;
+                    characterAnimationState.PlayFailureWrap();
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
@@ -93,7 +93,7 @@ public class InputChecker : MonoBehaviour
                 missCount++;
                 buttonRequests.RemoveAt(i);
                 buttonRequest.GetComponent<SpriteRenderer>().color = missColor;
-                characterAnimationState.triggerFail = true;
+                characterAnimationState.PlayFailureWrap();
             }
         }
     }

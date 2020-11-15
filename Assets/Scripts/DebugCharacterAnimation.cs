@@ -16,8 +16,8 @@ public class DebugCharacterAnimation : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(success))
-            characterAnimationState.triggerSuccess = true;
+            characterAnimationState.PlaySuccessWrap();
         if (Input.GetKeyDown(fail))
-            characterAnimationState.triggerFail = true;
+            characterAnimationState.PlayFailureWrap();
     }
 }
