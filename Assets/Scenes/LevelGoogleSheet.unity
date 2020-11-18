@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f980034f28195b419382cc22a46afce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 100
+  duration: 90
   something:
     m_PersistentCalls:
       m_Calls:
@@ -1628,7 +1628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375794958
 GameObject:
@@ -1800,7 +1800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1859,6 +1859,11 @@ PrefabInstance:
 --- !u!1 &1400598750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+  m_PrefabInstance: {fileID: 1400598749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1400598752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
   m_PrefabInstance: {fileID: 1400598749}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1450587286
@@ -2000,11 +2005,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712377342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: 4.5, z: 0}
+  m_LocalPosition: {x: -3.75, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1400598752}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1712377344
 MonoBehaviour:
@@ -2050,7 +2055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1778355767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2390,7 +2395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1958454617
 GameObject:
@@ -2664,7 +2669,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 18.99085
+  orthographic size: 6.0008264
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
