@@ -4,6 +4,7 @@ using GoogleSheetsToUnity;
 using GoogleSheetsToUnity.ThirdPary;
 using TinyJSON;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public delegate void OnSpreedSheetLoaded(GstuSpreadSheet sheet);
 namespace GoogleSheetsToUnity
@@ -50,15 +51,16 @@ namespace GoogleSheetsToUnity
             sb.Append("/values");
             sb.Append("/" + searchDetails.worksheetName + "!" + searchDetails.startCell + ":" + searchDetails.endCell);
             sb.Append("?key=" + Config.API_Key);
-            
+            var unityWebRequest = UnityWebRequest.Get(sb.ToString());
+
             if (Application.isPlaying)
-            {
-                new Task(Read(new WWW(sb.ToString()), searchDetails.titleColumn, searchDetails.titleRow, callback));
+            {    
+                new Task(Read(unityWebRequest, searchDetails.titleColumn, searchDetails.titleRow, callback));
             }
 #if UNITY_EDITOR
             else
             {
-                EditorCoroutineRunner.StartCoroutine(Read(new WWW(sb.ToString()), searchDetails.titleColumn, searchDetails.titleRow, callback));
+                EditorCoroutineRunner.StartCoroutine(Read(unityWebRequest, searchDetails.titleColumn, searchDetails.titleRow, callback));
             }
 #endif
         }
@@ -71,11 +73,11 @@ namespace GoogleSheetsToUnity
         /// <param name="titleRow"></param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        static IEnumerator Read(WWW www, string titleColumn, int titleRow, OnSpreedSheetLoaded callback)
+        static IEnumerator Read(UnityWebRequest unityWebRequest, string titleColumn, int titleRow, OnSpreedSheetLoaded callback)
         {
-            yield return www;
+            yield return unityWebRequest.SendWebRequest();
 
-            ValueRange rawData = JSON.Load(www.text).Make<ValueRange>();
+            ValueRange rawData = JSON.Load(unityWebRequest.downloadHandler.text).Make<ValueRange>();
             GSTU_SpreadsheetResponce responce = new GSTU_SpreadsheetResponce(rawData);
 
             GstuSpreadSheet spreadSheet = new GstuSpreadSheet(responce, titleColumn, titleRow);

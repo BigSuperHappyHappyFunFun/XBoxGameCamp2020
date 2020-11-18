@@ -20,7 +20,7 @@ public class LevelData : MonoBehaviour
     public List<ButtonRequest> buttonRequests;
     public UnityEvent levelLoaded;
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (level)
         {
@@ -30,6 +30,7 @@ public class LevelData : MonoBehaviour
         else
         {
             var search = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", "Sheet1");
+            yield return GoogleAuthrisationHelper.CheckForRefreshOfToken();
             SpreadsheetManager.Read(search, GetLevelText);
         }
     }

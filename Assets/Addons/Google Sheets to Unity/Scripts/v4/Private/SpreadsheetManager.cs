@@ -17,7 +17,7 @@ namespace GoogleSheetsToUnity
     /// Partial class for the spreadsheet manager to handle all private functions
     /// </summary>
     public partial class SpreadsheetManager
-    {   
+    {
         /// <summary>
         /// Chekcs for a valid token and if its out of date attempt to refresh it
         /// </summary>
@@ -34,7 +34,7 @@ namespace GoogleSheetsToUnity
                 yield return EditorCoroutineRunner.StartCoroutine(GoogleAuthrisationHelper.CheckForRefreshOfToken());
             }
 #endif
-        }    
+        }
 
         /// <summary>
         /// Reads information from a spreadsheet
@@ -44,27 +44,18 @@ namespace GoogleSheetsToUnity
         /// <param name="containsMergedCells"> does the spreadsheet contain merged cells, will attempt to group these by titles</param>
         public static void Read(GSTU_Search search, UnityAction<GstuSpreadSheet> callback, bool containsMergedCells = false)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("https://sheets.googleapis.com/v4/spreadsheets");
-            sb.Append("/" + search.sheetId);
-            sb.Append("/values");
-            sb.Append("/" + search.worksheetName + "!" + search.startCell + ":" + search.endCell);
-            sb.Append("?access_token=" + Config.gdr.access_token);
-
-            UnityWebRequest request = UnityWebRequest.Get(sb.ToString());
-
             if (Application.isPlaying)
             {
-                new Task(Read(request, search, containsMergedCells, callback));
+                new Task(Read(search, containsMergedCells, callback));
             }
 #if UNITY_EDITOR
             else
             {
-                EditorCoroutineRunner.StartCoroutine(Read(request,  search, containsMergedCells, callback));
+                EditorCoroutineRunner.StartCoroutine(Read(search, containsMergedCells, callback));
             }
 #endif
         }
-        
+
         /// <summary>
         /// Reads the spread sheet and callback with the results
         /// </summary>
@@ -73,7 +64,7 @@ namespace GoogleSheetsToUnity
         /// <param name="containsMergedCells"></param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        static IEnumerator Read(UnityWebRequest request, GSTU_Search search, bool containsMergedCells, UnityAction<GstuSpreadSheet> callback)
+        static IEnumerator Read(GSTU_Search search, bool containsMergedCells, UnityAction<GstuSpreadSheet> callback)
         {
             if (Application.isPlaying)
             {
@@ -86,16 +77,26 @@ namespace GoogleSheetsToUnity
             }
 #endif
 
-            using (request)
+            StringBuilder sb = new StringBuilder();
+            sb.Append("https://sheets.googleapis.com/v4/spreadsheets");
+            sb.Append("/" + search.sheetId);
+            sb.Append("/values");
+            sb.Append("/" + search.worksheetName + "!" + search.startCell + ":" + search.endCell);
+            sb.Append("?access_token=" + Config.gdr.access_token);
+            using (UnityWebRequest request = UnityWebRequest.Get(sb.ToString()))
             {
                 yield return request.SendWebRequest();
 
-                if(string.IsNullOrEmpty(request.downloadHandler.text) || request.downloadHandler.text == "{}")
+                if (string.IsNullOrEmpty(request.downloadHandler.text) || request.downloadHandler.text == "{}")
                 {
                     Debug.LogWarning("Unable to Retreive data from google sheets");
                     yield break;
                 }
-
+                if (request.responseCode == 401 || request.responseCode == 403)
+                {
+                    Debug.LogWarning("Unauthorized to Retreive data from google sheets");
+                    yield break;
+                }
 
                 ValueRange rawData = JSON.Load(request.downloadHandler.text).Make<ValueRange>();
                 GSTU_SpreadsheetResponce responce = new GSTU_SpreadsheetResponce(rawData);
@@ -103,7 +104,7 @@ namespace GoogleSheetsToUnity
                 //if it contains merged cells then process a second set of json data to know what these cells are
                 if (containsMergedCells)
                 {
-                    StringBuilder sb = new StringBuilder();
+                    sb = new StringBuilder();
                     sb.Append("https://sheets.googleapis.com/v4/spreadsheets");
                     sb.Append("/" + search.sheetId);
                     sb.Append("?access_token=" + Config.gdr.access_token);
@@ -118,7 +119,7 @@ namespace GoogleSheetsToUnity
 
                 if (callback != null)
                 {
-                    callback(new GstuSpreadSheet(responce, search.titleColumn,search.titleRow));
+                    callback(new GstuSpreadSheet(responce, search.titleColumn, search.titleRow));
                 }
             }
         }

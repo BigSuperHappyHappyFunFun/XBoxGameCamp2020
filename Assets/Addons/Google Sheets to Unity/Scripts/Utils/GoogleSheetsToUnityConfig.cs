@@ -5,19 +5,19 @@ using System;
 namespace GoogleSheetsToUnity
 {
     public class GoogleSheetsToUnityConfig : ScriptableObject
-  {
-    public string CLIENT_ID = "";
-    public string CLIENT_SECRET = "";
-    public string ACCESS_TOKEN = "";
+    {
+        public string CLIENT_ID = "";
+        public string CLIENT_SECRET = "";
+        public string ACCESS_TOKEN = "";
 
-    [HideInInspector]
-    public string REFRESH_TOKEN;
+        [HideInInspector]
+        public string REFRESH_TOKEN;
 
-    public string API_Key = "";
+        public string API_Key = "";
 
-    public int PORT;
+        public int PORT;
 
-    public GoogleDataResponse gdr;
+        public GoogleDataResponse gdr;
     }
 
     [System.Serializable]
