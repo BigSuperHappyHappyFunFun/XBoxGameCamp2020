@@ -1,6 +1,7 @@
 ﻿using GoogleSheetsToUnity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,12 +39,14 @@ public class LevelData : MonoBehaviour
     private void GetLevelText(GstuSpreadSheet sheet)
     {
         var levelText = "";
-        foreach (var row in sheet.rows.primaryDictionary.Values)
+        for (var i = 0; i < sheet.rows.primaryDictionary.Count; i++)
         {
-            for (var i = 0; i < row.Count; i++)
+            var key = sheet.rows.primaryDictionary.Keys.ElementAt(i);
+            var row = sheet.rows.primaryDictionary[key];
+            for (var j = 0; j < row.Count; j++)
             {
-                var cell = row[i];
-                levelText += i == 0 ? cell.value : "," + cell.value;
+                var cell = row[j];
+                levelText += j == 0 ? cell.value : "," + cell.value;
             }
             levelText += "\n";
         }
