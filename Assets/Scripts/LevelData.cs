@@ -18,6 +18,7 @@ public class LevelData : MonoBehaviour
     }
 
     public TextAsset level;
+    public string sheet = "Sheet1";
     public List<ButtonRequest> buttonRequests;
     public UnityEvent levelLoaded;
 
@@ -30,7 +31,7 @@ public class LevelData : MonoBehaviour
         }
         else
         {
-            var search = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", "Sheet1");
+            var search = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", sheet);
             yield return GoogleAuthrisationHelper.CheckForRefreshOfToken();
             SpreadsheetManager.Read(search, GetLevelText);
         }

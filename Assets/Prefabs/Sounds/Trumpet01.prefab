@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1181348607293537972, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
+      propertyPath: volume
+      value: 0.142
+      objectReference: {fileID: 0}
     - target: {fileID: 5930735375281186334, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_Name
       value: Trumpet01
@@ -17,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 611b9da88d410ba4a87e96dd53c3903d, type: 3}
     - target: {fileID: 7485295129498803254, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_Volume
-      value: 0.158
+      value: 0.107
       objectReference: {fileID: 0}
     - target: {fileID: 7814606448338402741, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_LocalPosition.x
