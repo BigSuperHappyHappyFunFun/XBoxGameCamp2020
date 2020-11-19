@@ -8,7 +8,9 @@ public class ButtonRequestSpawn : MonoBehaviour
     public Transform target;
     public LevelData levelData;
     public Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
+    public Dictionary<string, Color> colors = new Dictionary<string, Color>();
     public List<Sprite> spriteList = new List<Sprite>();
+    public List<Color> colorList = new List<Color>();
     public GameObject buttonRequestPrefab;
     public InputChecker inputChecker;
     public int index = 0;
@@ -26,6 +28,16 @@ public class ButtonRequestSpawn : MonoBehaviour
         sprites.Add("Down", spriteList[7]);
         sprites.Add("Left", spriteList[8]);
         sprites.Add("Right", spriteList[9]);
+        colors.Add("A", colorList[0]);
+        colors.Add("B", colorList[1]);
+        colors.Add("X", colorList[2]);
+        colors.Add("Y", colorList[3]);
+        colors.Add("L", colorList[4]);
+        colors.Add("R", colorList[5]);
+        colors.Add("Up", colorList[6]);
+        colors.Add("Down", colorList[7]);
+        colors.Add("Left", colorList[8]);
+        colors.Add("Right", colorList[9]);
     }
 
     private void Update()
@@ -47,6 +59,7 @@ public class ButtonRequestSpawn : MonoBehaviour
             var buttonRequestDelete = buttonRequestGameObject.GetComponent<ButtonRequestDelete>();
             buttonRequestMove.speed = buttonRequest.speed;
             buttonRequestSprite.sprite = sprites[buttonRequest.button];
+            buttonRequestSprite.color = colors[buttonRequest.button];
             buttonRequestDelete.spawnPosition = spawn.position;
             buttonRequestGameObject.name = buttonRequestSprite.sprite.name;
             inputChecker.buttonRequests.Add(buttonRequestGameObject);
