@@ -62,7 +62,18 @@ public class ButtonRequestSpawn : MonoBehaviour
             buttonRequestSprite.color = colors[buttonRequest.button];
             buttonRequestDelete.spawnPosition = spawn.position;
             buttonRequestGameObject.name = buttonRequestSprite.sprite.name;
-            inputChecker.buttonRequests.Add(buttonRequestGameObject);
+
+            if (buttonRequest.owner != "Enemy")
+            {
+                inputChecker.buttonRequests.Add(buttonRequestGameObject);
+            }
+            else
+            {
+                var halfAlpha = colors[buttonRequest.button];
+                halfAlpha.a = 0.5f;
+                buttonRequestSprite.color = halfAlpha;
+            }
+            
             index++;
         }
     }

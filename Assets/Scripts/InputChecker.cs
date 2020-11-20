@@ -9,6 +9,7 @@ public class InputChecker : MonoBehaviour
     public float bestThreshold = 0.1f;
     public float betterThreshold = 0.2f;
     public float goodThreshold = 0.3f;
+    public float speedAdjustmentThreshold = 0.2f;
     public Transform closestButtonRequest;
     public CharacterAnimationState characterAnimationState;
 
@@ -31,11 +32,14 @@ public class InputChecker : MonoBehaviour
             || input.buttonLeftPressed
             || input.buttonRightPressed;
         closestButtonRequest = GetClosestButtonRequest();
+        var speedAdjustment = 1f;
+        if (closestButtonRequest)
+            speedAdjustment = 1 + closestButtonRequest.GetComponent<ButtonRequestMove>().speed * speedAdjustmentThreshold;
 
         if (anyPressed && closestButtonRequest)
         {
             var distance = dist(closestButtonRequest, transform);
-            if (distance <= bestThreshold)
+            if (distance <= bestThreshold * speedAdjustment)
             {
                 if (IsCorrectButton())
                 {
@@ -51,7 +55,7 @@ public class InputChecker : MonoBehaviour
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
-            else if (distance <= betterThreshold)
+            else if (distance <= betterThreshold * speedAdjustment)
             {
                 if (IsCorrectButton())
                 {
@@ -67,7 +71,7 @@ public class InputChecker : MonoBehaviour
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
-            else if (distance <= goodThreshold)
+            else if (distance <= goodThreshold * speedAdjustment)
             {
                 if (IsCorrectButton())
                 {
@@ -87,7 +91,7 @@ public class InputChecker : MonoBehaviour
         for (var i = buttonRequests.Count - 1; i >= 0; i--)
         {
             var buttonRequest = buttonRequests[i];
-            var tooLate = buttonRequest.transform.position.x < transform.position.x - goodThreshold;
+            var tooLate = buttonRequest.transform.position.x < transform.position.x - goodThreshold * speedAdjustment;
             if (tooLate)
             {
                 missCount++;

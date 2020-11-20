@@ -15,6 +15,7 @@ public class LevelData : MonoBehaviour
         public float start;
         public float end;
         public float speed;
+        public string owner;
     }
 
     public TextAsset level;
@@ -73,6 +74,10 @@ public class LevelData : MonoBehaviour
                 buttonRequest.speed = System.Convert.ToSingle(buttonRequestStrings[3]);
                 buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start}";// - {buttonRequest.end}";
                 buttonRequests.Add(buttonRequest);
+                if (sheet == "DemoLevel")
+                {
+                    buttonRequest.owner = buttonRequestStrings[4];
+                }
             }
             catch { }
         }

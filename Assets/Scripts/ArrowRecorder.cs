@@ -16,10 +16,10 @@ public class ArrowRecorder : MonoBehaviour
         if (input.buttonDownPressed || input.buttonLeftPressed || input.buttonRightPressed || input.buttonUpPressed)
             queueForDebug = true;
 
-        if (input.buttonUpPressed) level += $"{time},up\n";
-        if (input.buttonDownPressed) level += $"{time},down\n";
-        if (input.buttonLeftPressed) level += $"{time},left\n";
-        if (input.buttonRightPressed) level += $"{time},right\n";
+        if (input.buttonUpPressed) level += $"{time},{time},Up,4\n";
+        if (input.buttonDownPressed) level += $"{time},{time},Down,4\n";
+        if (input.buttonLeftPressed) level += $"{time},{time},Left,4\n";
+        if (input.buttonRightPressed) level += $"{time},{time},Right,4\n";
 
         if (queueForDebug)
             Debug.Log(level);
