@@ -12,24 +12,31 @@ public class CharacterAnimationState : MonoBehaviour
     public int successIndex = 0;
     public int failureIndex = 0;
 
-    public UnityEvent succeeded;
-    public UnityEvent failed;
-
     private void OnValidate()
     {
         if (!animator) animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        GameEvents.PressedCorrect.Add(PlaySuccessWrap);
+        GameEvents.Failed.Add(PlayFailureWrap);
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.PressedCorrect?.Remove(PlaySuccessWrap);
+        GameEvents.Failed?.Remove(PlayFailureWrap);
+    }
+
     public void PlaySuccess()
     {
         AnimatorCrossFade("Success");
-        succeeded.Invoke();
     }
 
     public void PlayFailure()
     {
         AnimatorCrossFade("Failure");
-        failed.Invoke();
     }
 
     public void PlaySuccessWrap()
@@ -37,7 +44,6 @@ public class CharacterAnimationState : MonoBehaviour
         var animationName = $"Success {successIndex}";
         AnimatorCrossFade(animationName);
         successIndex = (successIndex + 1) % numberOfSuccesses;
-        succeeded.Invoke();
     }
 
     public void PlayFailureWrap()
@@ -45,7 +51,6 @@ public class CharacterAnimationState : MonoBehaviour
         var animationName = $"Failure {failureIndex}";
         AnimatorCrossFade(animationName);
         failureIndex = (failureIndex + 1) % numberOfFailures;
-        failed.Invoke();
     }
 
     private void AnimatorCrossFade(string animationName)

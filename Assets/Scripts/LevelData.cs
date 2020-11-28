@@ -82,5 +82,6 @@ public class LevelData : MonoBehaviour
             catch { }
         }
         levelLoaded.Invoke();
+        GameEvents.LevelStarted.Invoke();
     }
 }

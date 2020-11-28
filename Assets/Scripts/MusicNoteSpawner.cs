@@ -5,6 +5,16 @@ public class MusicNoteSpawner : MonoBehaviour
 {
     public GameObject musicNotePrefab;
 
+    private void OnEnable()
+    {
+        GameEvents.PressedCorrect.Add(Spawn);
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.PressedCorrect?.Remove(Spawn);
+    }
+
     public void Spawn()
     {
         var musicNote = Instantiate(musicNotePrefab);

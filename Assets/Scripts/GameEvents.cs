@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class GameEvents : MonoBehaviour
+{
+    private static GameEvents singleton;
+    private static GameEvents Singleton => GetSingleton();
+
+    public UnityEvent pressedCorrect = new UnityEvent();
+    public UnityEvent pressedGood = new UnityEvent();
+    public UnityEvent pressedGreat = new UnityEvent();
+    public UnityEvent pressedPerfect = new UnityEvent();
+    public UnityEvent pressedWrong = new UnityEvent();
+    public UnityEvent missed = new UnityEvent();
+    public UnityEvent failed = new UnityEvent();
+    public UnityEvent levelStarted = new UnityEvent();
+    public UnityEvent levelFinished = new UnityEvent();
+
+    public static UnityEvent PressedCorrect => Singleton?.pressedCorrect;
+    public static UnityEvent PressedGood => Singleton?.pressedGood;
+    public static UnityEvent PressedGreat => Singleton?.pressedGreat;
+    public static UnityEvent PressedPerfect => Singleton?.pressedPerfect;
+    public static UnityEvent PressedWrong => Singleton?.pressedWrong;
+    public static UnityEvent Missed => Singleton?.missed;
+    public static UnityEvent Failed => Singleton?.failed;
+    public static UnityEvent LevelStarted => Singleton?.levelStarted;
+    public static UnityEvent LevelFinished => Singleton?.levelFinished;
+
+    private static GameEvents GetSingleton()
+    {
+        if (singleton)
+        {
+            return singleton;
+        }
+        else
+        {
+            singleton = FindObjectOfType<GameEvents>();
+            return singleton;
+        }
+    }
+}

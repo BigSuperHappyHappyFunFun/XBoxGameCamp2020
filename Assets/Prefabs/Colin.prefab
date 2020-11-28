@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917146560924964701}
-  - component: {fileID: 7386303348959759309}
+  - component: {fileID: 4845365679989347347}
   m_Layer: 0
   m_Name: GoodSoundSpawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 6651590597005839017}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7386303348959759309
+--- !u!114 &4845365679989347347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5110054537018034575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13aaa8973ed69294cb21ea1bff6394e8, type: 3}
+  m_Script: {fileID: 11500000, guid: ccc0fa35b0162114c847b42928a77b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundPrefabs:
@@ -172,48 +172,6 @@ MonoBehaviour:
   numberOfFailures: 2
   successIndex: 0
   failureIndex: 0
-  succeeded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6651590597520611847}
-        m_TargetAssemblyTypeName: MusicNoteSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7386303348959759309}
-        m_TargetAssemblyTypeName: RandomSoundSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  failed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6442829516436281510}
-        m_TargetAssemblyTypeName: SoundSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6651590597005839028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a5482807d9c1b438e3367b875b8b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAnimationState: {fileID: 6651590597005839019}
   success: 113
   fail: 101
 --- !u!1 &6651590597520611845
@@ -282,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3822288440360646329}
-  - component: {fileID: 6442829516436281510}
+  - component: {fileID: 2660590995283714531}
   m_Layer: 0
   m_Name: BadSoundSpawner
   m_TagString: Untagged
@@ -304,7 +261,7 @@ Transform:
   m_Father: {fileID: 6651590597005839017}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6442829516436281510
+--- !u!114 &2660590995283714531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,7 +270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7848454672833424424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3aa3b83410ec674e9d048d15065d1d0, type: 3}
+  m_Script: {fileID: 11500000, guid: c41471de070063b4a998ee238695a9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundPrefab: {fileID: 5904949437008937023, guid: 4d7d5f170b1940b42a0b1e66c122da3e, type: 3}
