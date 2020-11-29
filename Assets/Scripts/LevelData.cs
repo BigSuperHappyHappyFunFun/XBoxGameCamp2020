@@ -1,4 +1,5 @@
 ﻿using GoogleSheetsToUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ public class LevelData : MonoBehaviour
         public float end;
         public float speed;
         public string owner;
+        public string combo;
+        public bool isComboStart;
+        public bool isComboEnd;
     }
 
     public TextAsset level;
@@ -76,12 +80,51 @@ public class LevelData : MonoBehaviour
                 buttonRequests.Add(buttonRequest);
                 if (sheet == "DemoLevel")
                 {
+                    var combo = buttonRequestStrings.Length >= 6 ? buttonRequestStrings[5] : "";
                     buttonRequest.owner = buttonRequestStrings[4];
+                    buttonRequest.combo = combo;
+                    buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} [{buttonRequest.combo}] by {buttonRequest.owner}";
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"{ex} @ i = {i}");
+            }
         }
+        AssignComboStart();
+        AssignComboEnd();
+
         levelLoaded.Invoke();
         GameEvents.LevelStarted.Invoke();
+    }
+
+    private void AssignComboStart()
+    {
+        var prevCombo = "";
+        for (var i = 0; i < buttonRequests.Count; i++)
+        {
+            if (!string.IsNullOrEmpty(buttonRequests[i].combo))
+                if (prevCombo != buttonRequests[i].combo)
+                {
+                    buttonRequests[i].isComboStart = true;
+                    buttonRequests[i].name += "*";
+                }
+            prevCombo = buttonRequests[i].combo;
+        }
+    }
+
+    private void AssignComboEnd()
+    {
+        var prevCombo = "";
+        for (var i = buttonRequests.Count - 1; i >= 0; i--)
+        {
+            if (!string.IsNullOrEmpty(buttonRequests[i].combo))
+                if (prevCombo != buttonRequests[i].combo)
+                {
+                    buttonRequests[i].isComboEnd = true;
+                    buttonRequests[i].name += "!";
+                }
+            prevCombo = buttonRequests[i].combo;
+        }
     }
 }

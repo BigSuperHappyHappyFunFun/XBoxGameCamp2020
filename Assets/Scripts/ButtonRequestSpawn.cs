@@ -57,10 +57,14 @@ public class ButtonRequestSpawn : MonoBehaviour
             var buttonRequestMove = buttonRequestGameObject.GetComponent<ButtonRequestMove>();
             var buttonRequestSprite = buttonRequestGameObject.GetComponent<SpriteRenderer>();
             var buttonRequestDelete = buttonRequestGameObject.GetComponent<ButtonRequestDelete>();
+            var buttonRequestCombo = buttonRequestGameObject.GetComponent<ButtonRequestCombo>();
             buttonRequestMove.speed = buttonRequest.speed;
             buttonRequestSprite.sprite = sprites[buttonRequest.button];
             buttonRequestSprite.color = colors[buttonRequest.button];
             buttonRequestDelete.spawnPosition = spawn.position;
+            buttonRequestCombo.combo = buttonRequest.combo;
+            buttonRequestCombo.isStart = buttonRequest.isComboStart;
+            buttonRequestCombo.isEnd = buttonRequest.isComboEnd;
             buttonRequestGameObject.name = buttonRequestSprite.sprite.name;
 
             if (buttonRequest.owner != "Enemy")
@@ -73,7 +77,7 @@ public class ButtonRequestSpawn : MonoBehaviour
                 halfAlpha.a = 0.5f;
                 buttonRequestSprite.color = halfAlpha;
             }
-            
+
             index++;
         }
     }

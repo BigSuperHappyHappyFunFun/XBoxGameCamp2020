@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class GameEvents : MonoBehaviour
@@ -17,6 +15,9 @@ public class GameEvents : MonoBehaviour
     public UnityEvent failed = new UnityEvent();
     public UnityEvent levelStarted = new UnityEvent();
     public UnityEvent levelFinished = new UnityEvent();
+    public UnityEvent<int> landedCombo = new UnityEvent<int>();
+    public UnityEvent<int> finishedCombo = new UnityEvent<int>();
+    public UnityEvent<int> cancelledCombo = new UnityEvent<int>();
 
     public static UnityEvent PressedCorrect => Singleton?.pressedCorrect;
     public static UnityEvent PressedGood => Singleton?.pressedGood;
@@ -27,6 +28,9 @@ public class GameEvents : MonoBehaviour
     public static UnityEvent Failed => Singleton?.failed;
     public static UnityEvent LevelStarted => Singleton?.levelStarted;
     public static UnityEvent LevelFinished => Singleton?.levelFinished;
+    public static UnityEvent<int> LandedCombo => Singleton?.landedCombo;
+    public static UnityEvent<int> FinishedCombo => Singleton?.finishedCombo;
+    public static UnityEvent<int> CancelledCombo => Singleton?.cancelledCombo;
 
     private static GameEvents GetSingleton()
     {
