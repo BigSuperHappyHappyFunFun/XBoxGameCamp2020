@@ -1529,7 +1529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 361.75, y: 234.88}
+  m_AnchoredPosition: {x: -39, y: -121}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.50000006}
 --- !u!1 &912774728
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1375794960}
-  inputChecker: {fileID: 1712377344}
+  inputChecker: {fileID: 2056558645}
 --- !u!1001 &1400598749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2168,13 +2168,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 649355873}
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: characterAnimationState
+      value: 
+      objectReference: {fileID: 1691397327}
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: bestThreshold
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: betterThreshold
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: goodThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2056558646}
+    - target: {fileID: 1914274987639440667, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.3529412
+      objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2216,28 +2244,15 @@ PrefabInstance:
       propertyPath: levelData
       value: 
       objectReference: {fileID: 815151571}
-    - target: {fileID: 1914274988589190073, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: inputChecker
-      value: 
-      objectReference: {fileID: 1712377344}
     - target: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_Name
       value: Button Request Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
 --- !u!1 &1400598750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-  m_PrefabInstance: {fileID: 1400598749}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1400598752 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
   m_PrefabInstance: {fileID: 1400598749}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1450587286
@@ -2643,67 +2658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110ec02a6ce76134280d3ae294868d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1712377342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1712377343}
-  - component: {fileID: 1712377344}
-  m_Layer: 0
-  m_Name: Input Checker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1712377343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712377342}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1400598752}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712377344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712377342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f07a07b9e6aa640ae4728dc7eb9bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 649355873}
-  buttonRequests: []
-  bestThreshold: 0.1
-  betterThreshold: 0.2
-  goodThreshold: 0.3
-  speedAdjustmentThreshold: 0.2
-  closestButtonRequest: {fileID: 0}
-  characterAnimationState: {fileID: 1691397327}
-  bestCount: 0
-  betterCount: 0
-  goodCount: 0
-  wrongButtonCount: 0
-  missCount: 0
-  goodColor: {r: 1, g: 0.5686275, b: 0.015686275, a: 1}
-  betterColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  bestColor: {r: 0, g: 1, b: 0, a: 1}
-  wrongColor: {r: 1, g: 0, b: 0, a: 1}
-  missColor: {r: 0.49056602, g: 0, b: 0, a: 1}
 --- !u!1 &1778355766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,6 +3560,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!1 &2056558642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1914274987639440665, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+  m_PrefabInstance: {fileID: 1400598749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056558645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+  m_PrefabInstance: {fileID: 1400598749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056558642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f07a07b9e6aa640ae4728dc7eb9bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2056558646
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056558642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 374ab65a434853a45b72c5266a5308aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6651590598535685732
 PrefabInstance:
   m_ObjectHideFlags: 0

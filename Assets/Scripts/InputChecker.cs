@@ -12,6 +12,7 @@ public class InputChecker : MonoBehaviour
     public float speedAdjustmentThreshold = 0.2f;
     public Transform closestButtonRequest;
     public CharacterAnimationState characterAnimationState;
+    public Animator animator;
 
     public int bestCount = 0;
     public int betterCount = 0;
@@ -24,7 +25,12 @@ public class InputChecker : MonoBehaviour
     public Color bestColor = Color.green;
     public Color wrongColor = Color.red;
     public Color missColor = Color.red;
-    
+
+    private void OnValidate()
+    {
+        if (!animator) animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         var anyPressed = input.buttonUpPressed
@@ -32,14 +38,23 @@ public class InputChecker : MonoBehaviour
             || input.buttonLeftPressed
             || input.buttonRightPressed;
         closestButtonRequest = GetClosestButtonRequest();
-        var speedAdjustment = 1f;
+
+        var xExtent = transform.lossyScale.x / 2;
+
         if (closestButtonRequest)
-            speedAdjustment = 1 + closestButtonRequest.GetComponent<ButtonRequestMove>().speed * speedAdjustmentThreshold;
+        {
+            var distance = dist(closestButtonRequest, transform);
+            animator.SetBool("IsReady", distance < xExtent * 1.1f);
+        }
+        else
+        {
+            animator.SetBool("IsReady", false);
+        }
 
         if (anyPressed && closestButtonRequest)
         {
             var distance = dist(closestButtonRequest, transform);
-            if (distance <= bestThreshold * speedAdjustment)
+            if (distance <= bestThreshold * xExtent)
             {
                 if (IsCorrectButton())
                 {
@@ -57,7 +72,7 @@ public class InputChecker : MonoBehaviour
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
-            else if (distance <= betterThreshold * speedAdjustment)
+            else if (distance <= betterThreshold * xExtent)
             {
                 if (IsCorrectButton())
                 {
@@ -75,7 +90,7 @@ public class InputChecker : MonoBehaviour
                 }
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
-            else if (distance <= goodThreshold * speedAdjustment)
+            else if (distance <= goodThreshold * xExtent)
             {
                 if (IsCorrectButton())
                 {
@@ -97,7 +112,7 @@ public class InputChecker : MonoBehaviour
         for (var i = buttonRequests.Count - 1; i >= 0; i--)
         {
             var buttonRequest = buttonRequests[i];
-            var tooLate = buttonRequest.transform.position.x < transform.position.x - goodThreshold * speedAdjustment;
+            var tooLate = buttonRequest.transform.position.x < transform.position.x - goodThreshold * xExtent;
             if (tooLate)
             {
                 missCount++;

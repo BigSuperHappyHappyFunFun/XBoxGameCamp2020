@@ -46,26 +46,24 @@ public class ButtonRequestSpawn : MonoBehaviour
         if (index >= levelData.buttonRequests.Count)
             return;
 
+        var animationLength = 5;
         var buttonRequest = levelData.buttonRequests[index];
-        var targetDistance = Vector3.Distance(spawn.position, target.position);
-        var timeToTarget = targetDistance / buttonRequest.speed;
+        var timeToTarget = animationLength / buttonRequest.speed;
         var startTime = buttonRequest.start - timeToTarget;
         var timeForNextButton = time >= startTime;
         if (timeForNextButton)
         {
             var buttonRequestGameObject = Instantiate(buttonRequestPrefab, spawn.position, Quaternion.identity, transform);
-            var buttonRequestMove = buttonRequestGameObject.GetComponent<ButtonRequestMove>();
             var buttonRequestSprite = buttonRequestGameObject.GetComponent<SpriteRenderer>();
-            var buttonRequestDelete = buttonRequestGameObject.GetComponent<ButtonRequestDelete>();
             var buttonRequestCombo = buttonRequestGameObject.GetComponent<ButtonRequestCombo>();
-            buttonRequestMove.speed = buttonRequest.speed;
+            var buttonRequestAnimator = buttonRequestGameObject.GetComponent<Animator>();
             buttonRequestSprite.sprite = sprites[buttonRequest.button];
             buttonRequestSprite.color = colors[buttonRequest.button];
-            buttonRequestDelete.spawnPosition = spawn.position;
             buttonRequestCombo.combo = buttonRequest.combo;
             buttonRequestCombo.isStart = buttonRequest.isComboStart;
             buttonRequestCombo.isEnd = buttonRequest.isComboEnd;
             buttonRequestGameObject.name = buttonRequestSprite.sprite.name;
+            buttonRequestAnimator.speed = buttonRequest.speed;
 
             if (buttonRequest.owner != "Enemy")
             {

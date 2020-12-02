@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914274987639440664}
   - component: {fileID: 1914274987639440667}
+  - component: {fileID: 2056558645}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914274987639440665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 3, z: 0.5}
+  m_LocalPosition: {x: -5.5, y: 3.17, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1914274988589190072}
   m_RootOrder: 1
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 02db98f5fd29bbe4e96b0a0e7b638663, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,6 +83,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2056558645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914274987639440665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f07a07b9e6aa640ae4728dc7eb9bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  buttonRequests: []
+  bestThreshold: 0.1
+  betterThreshold: 0.2
+  goodThreshold: 0.3
+  speedAdjustmentThreshold: 0.2
+  closestButtonRequest: {fileID: 0}
+  characterAnimationState: {fileID: 0}
+  bestCount: 0
+  betterCount: 0
+  goodCount: 0
+  wrongButtonCount: 0
+  missCount: 0
+  goodColor: {r: 1, g: 0.5686275, b: 0.015686275, a: 1}
+  betterColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  bestColor: {r: 0, g: 1, b: 0, a: 1}
+  wrongColor: {r: 1, g: 0, b: 0, a: 1}
+  missColor: {r: 0.49056602, g: 0, b: 0, a: 1}
 --- !u!1 &1914274988589190086
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +185,7 @@ MonoBehaviour:
   - {r: 0.5550907, g: 0.5627756, b: 0.990566, a: 1}
   - {r: 1, g: 0.40943396, b: 0.40943396, a: 1}
   buttonRequestPrefab: {fileID: 4651970213961274403, guid: 76079cd0715aa254f892544641a4ab06, type: 3}
-  inputChecker: {fileID: 0}
+  inputChecker: {fileID: 2056558645}
   index: 0
   time: 0
 --- !u!1 &1914274989211887166
@@ -173,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1914274989211887153
 Transform:
   m_ObjectHideFlags: 0
@@ -263,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914274989321452408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalPosition: {x: 4.286726, y: 0.6175711, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1914274988589190072}
