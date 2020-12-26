@@ -5,12 +5,7 @@ public class CharacterAnimationState : MonoBehaviour
 {
     public Animator animator;
     public float crossFadeTime = 0.5f;
-
-    public int numberOfSuccesses = 3;
-    public int numberOfFailures = 2;
-
-    public int successIndex = 0;
-    public int failureIndex = 0;
+    public bool isComboSuccessThisFrame;
 
     private void OnValidate()
     {
@@ -19,38 +14,45 @@ public class CharacterAnimationState : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.PressedCorrect.Add(PlaySuccessWrap);
-        GameEvents.Failed.Add(PlayFailureWrap);
+        GameEvents.PressedCorrect.Add(PlayNoteSuccess);
+        GameEvents.FinishedCombo.Add(PlayComboSuccess);
+        GameEvents.PressedWrong.Add(PlayPressedWrong);
+        GameEvents.Missed.Add(PlayMissed);
     }
 
     private void OnDisable()
     {
-        GameEvents.PressedCorrect?.Remove(PlaySuccessWrap);
-        GameEvents.Failed?.Remove(PlayFailureWrap);
+        GameEvents.PressedCorrect?.Remove(PlayNoteSuccess);
+        GameEvents.FinishedCombo?.Remove(PlayComboSuccess);
+        GameEvents.PressedWrong?.Remove(PlayPressedWrong);
+        GameEvents.Missed?.Remove(PlayMissed);
     }
 
-    public void PlaySuccess()
+    private void Update()
     {
-        AnimatorCrossFade("Success");
+        isComboSuccessThisFrame = false;
     }
 
-    public void PlayFailure()
+    public void PlayNoteSuccess()
     {
-        AnimatorCrossFade("Failure");
+        if (isComboSuccessThisFrame) return;
+        AnimatorCrossFade("NoteSuccess");
     }
 
-    public void PlaySuccessWrap()
+    public void PlayComboSuccess(int _ignore)
     {
-        var animationName = $"Success {successIndex}";
-        AnimatorCrossFade(animationName);
-        successIndex = (successIndex + 1) % numberOfSuccesses;
+        isComboSuccessThisFrame = true;
+        AnimatorCrossFade("ComboSuccess");
     }
 
-    public void PlayFailureWrap()
+    public void PlayPressedWrong()
     {
-        var animationName = $"Failure {failureIndex}";
-        AnimatorCrossFade(animationName);
-        failureIndex = (failureIndex + 1) % numberOfFailures;
+        AnimatorCrossFade("PressedWrong");
+    }
+
+    public void PlayMissed()
+    {
+        AnimatorCrossFade("Missed");
     }
 
     private void AnimatorCrossFade(string animationName)

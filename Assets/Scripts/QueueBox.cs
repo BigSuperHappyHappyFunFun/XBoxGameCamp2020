@@ -24,10 +24,8 @@ public class QueueBox : MonoBehaviour
 
     private void OnDisable()
     {
-        if (GameEvents.NewEnemyNote != null)
-            GameEvents.NewEnemyNote.Remove(AddNote);
-        if (GameEvents.NewPlayerNote != null)
-            GameEvents.NewPlayerNote.Remove(RemoveNote);
+        GameEvents.NewEnemyNote?.Remove(AddNote);
+        GameEvents.NewPlayerNote?.Remove(RemoveNote);
     }
 
     public void AddNote(GameObject noteGameObject)
