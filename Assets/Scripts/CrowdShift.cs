@@ -9,7 +9,8 @@ public class CrowdShift : MonoBehaviour
     private void OnEnable()
     {
         targetPosition = transform.position;
-        GameEvents.PressedCorrect.Add(ShiftLeft);
+        GameEvents.PressedGreat.Add(ShiftLeft);
+        GameEvents.PressedPerfect.Add(ShiftLeft);
         GameEvents.Failed.Add(ShiftRight);
     }
 
