@@ -68,12 +68,13 @@ public class ButtonRequestSpawn : MonoBehaviour
             if (buttonRequest.owner != "Enemy")
             {
                 inputChecker.buttonRequests.Add(buttonRequestGameObject);
+                GameEvents.NewPlayerNote.Invoke(buttonRequestGameObject);
             }
             else
             {
-                var halfAlpha = colors[buttonRequest.button];
-                halfAlpha.a = 0.5f;
-                buttonRequestSprite.color = halfAlpha;
+                buttonRequestAnimator.enabled = false;
+                buttonRequestGameObject.transform.localScale = Vector3.one;
+                GameEvents.NewEnemyNote.Invoke(buttonRequestGameObject);
             }
 
             index++;

@@ -18,6 +18,8 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<int> landedCombo = new UnityEvent<int>();
     public UnityEvent<int> finishedCombo = new UnityEvent<int>();
     public UnityEvent<int> cancelledCombo = new UnityEvent<int>();
+    public UnityEvent<GameObject> newEnemyNote = new UnityEvent<GameObject>();
+    public UnityEvent<GameObject> newPlayerNote = new UnityEvent<GameObject>();
 
     public static UnityEvent PressedCorrect => Singleton?.pressedCorrect;
     public static UnityEvent PressedGood => Singleton?.pressedGood;
@@ -31,6 +33,8 @@ public class GameEvents : MonoBehaviour
     public static UnityEvent<int> LandedCombo => Singleton?.landedCombo;
     public static UnityEvent<int> FinishedCombo => Singleton?.finishedCombo;
     public static UnityEvent<int> CancelledCombo => Singleton?.cancelledCombo;
+    public static UnityEvent<GameObject> NewEnemyNote => Singleton?.newEnemyNote;
+    public static UnityEvent<GameObject> NewPlayerNote => Singleton?.newPlayerNote;
 
     private static GameEvents GetSingleton()
     {

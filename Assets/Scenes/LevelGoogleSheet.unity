@@ -2176,26 +2176,6 @@ PrefabInstance:
       propertyPath: characterAnimationState
       value: 
       objectReference: {fileID: 1691397327}
-    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: bestThreshold
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: betterThreshold
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: goodThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 2056558646}
-    - target: {fileID: 1914274987639440667, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-      propertyPath: m_Color.a
-      value: 0.3529412
-      objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190072, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2480,6 +2460,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  newEnemyNote:
+    m_PersistentCalls:
+      m_Calls: []
+  newPlayerNote:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1460491334
 Transform:
   m_ObjectHideFlags: 0
@@ -3560,41 +3546,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!1 &2056558642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1914274987639440665, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
-  m_PrefabInstance: {fileID: 1400598749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2056558645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2056558645, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
   m_PrefabInstance: {fileID: 1400598749}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056558642}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f07a07b9e6aa640ae4728dc7eb9bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2056558646
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056558642}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 374ab65a434853a45b72c5266a5308aa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6651590598535685732
 PrefabInstance:
   m_ObjectHideFlags: 0

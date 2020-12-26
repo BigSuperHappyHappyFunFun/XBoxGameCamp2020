@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4651970213961274404}
   - component: {fileID: 5733454363810049499}
   - component: {fileID: -2693498078927505717}
+  - component: {fileID: 6523977839761791071}
   m_Layer: 0
   m_Name: ButtonRequest
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c3d2b6823f1e2aa4c8a35b66f5df22f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -120,6 +121,20 @@ MonoBehaviour:
   combo: 
   isStart: 0
   isEnd: 0
+--- !u!114 &6523977839761791071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651970213961274403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10a3c19fddf7a045b6dac63b5cb990f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  speed: 0
 --- !u!1 &7955347920516466161
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5282773285433708701
 Transform:
   m_ObjectHideFlags: 0
