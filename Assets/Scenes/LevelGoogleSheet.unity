@@ -1650,10 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 912774731}
   crossFadeTime: 0.1
-  numberOfSuccesses: 3
-  numberOfFailures: 2
-  successIndex: 0
-  failureIndex: 0
+  isComboSuccessThisFrame: 0
 --- !u!114 &912774733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3254,8 +3251,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974790085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.34, z: 0}
-  m_LocalScale: {x: 0.85172, y: 0.85172, z: 0.85172}
+  m_LocalPosition: {x: 0.3, y: 0.22, z: 0}
+  m_LocalScale: {x: 0.7945124, y: 0.7945124, z: 0.7945124}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -3300,7 +3297,7 @@ SpriteRenderer:
   m_SortingLayerID: -375053393
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e97a1263e439f584ab66187390150627, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdf42044cf5a2de4fb4a0dfc90136a73, type: 3}
   m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3365,7 +3362,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.00335
+  orthographic size: 18.939632
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
