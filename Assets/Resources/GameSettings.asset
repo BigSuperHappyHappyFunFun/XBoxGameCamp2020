@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf619ed7a3db304cbcc0a21d8e77cae, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  volume: 0.5
+  majorVersion: 0
+  minorVersion: 0
+  microVersion: 0
+  volume: 0.364547
