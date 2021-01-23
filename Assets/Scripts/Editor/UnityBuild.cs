@@ -70,7 +70,8 @@ namespace SailorStrike
             gameSettings.microVersion++;
             UnityEngine.Debug.Log($"Game Settings updated to: v{gameSettings.Version}");
             EditorUtility.SetDirty(gameSettings);
-            UnityEngine.Debug.Log($"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag}");
+            UnityEngine.Debug.Log($"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag} copied to clipboard!");
+            GUIUtility.systemCopyBuffer = $"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag}";
         }
 
         private static BuildReport Build(BuildTargetGroup targetGroup, BuildTarget target)

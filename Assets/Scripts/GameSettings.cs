@@ -8,6 +8,7 @@ public class GameSettings : ScriptableObject
     public int minorVersion = 0;
     public int microVersion = 0;
     public float volume;
+    internal bool showTouchControls;
 
     public string Version => $"{majorVersion}.{minorVersion}.{microVersion}";
 
