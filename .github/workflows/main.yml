@@ -1,0 +1,24 @@
+name: Unity Build
+on:
+  push:
+    tags:
+    - '*'
+jobs:
+  webgl:
+    name: WebGL Build and Post
+    runs-on: ubuntu-latest    
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ETdoFresh/Actions/UnityBuild@2020.1.10f1
+      with:
+        UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        BUILD_NAME: XboxGameCamp2020
+        BUILD_TARGET: WebGL
+    - uses: ETdoFresh/Actions/TagDirectory@2020.1.10f1
+    - uses: ETdoFresh/Actions/UploadToGithubPages@2020.1.10f1
+      with:
+        WIPEOUT_PREVIOUS_CONTENT: 0
+        GITHUB_REPOSITORY: BigSuperHappyHappyFunFun/XBoxGameCamp2020
+        GITHUB_USERNAME: ${{ secrets.UNITY_USERNAME }}
+        GITHUB_TOKEN: ${{ secrets.UNITY_TOKEN }}
