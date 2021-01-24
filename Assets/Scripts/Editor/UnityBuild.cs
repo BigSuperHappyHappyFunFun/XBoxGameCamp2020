@@ -70,8 +70,24 @@ namespace SailorStrike
             gameSettings.microVersion++;
             UnityEngine.Debug.Log($"Game Settings updated to: v{gameSettings.Version}");
             EditorUtility.SetDirty(gameSettings);
+            AssetDatabase.SaveAssets();
+            UnityEngine.Debug.Log($"Pushing tags...");
+            Process.Start("git", $"add {gameSettingsPath}");
+            Process.Start("git", $"commit -m \"Increment GameSettings Version to {tag}\"");
+            Process.Start("git", $"push");
+            UnityEngine.Debug.Log($"Increment Version on Repository...");
             UnityEngine.Debug.Log($"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag} copied to clipboard!");
             GUIUtility.systemCopyBuffer = $"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag}";
+        }
+
+        [MenuItem("Build/TestGit")]
+        public static void TestGit()
+        {
+            var gameSettingsGUIDs = AssetDatabase.FindAssets("t:GameSettings");
+            var gameSettingsPath = AssetDatabase.GUIDToAssetPath(gameSettingsGUIDs[0]);
+            var gameSettings = AssetDatabase.LoadAssetAtPath<GameSettings>(gameSettingsPath);
+            var tag = $"v{gameSettings.Version}";
+            UnityEngine.Debug.Log(gameSettingsPath);
         }
 
         private static BuildReport Build(BuildTargetGroup targetGroup, BuildTarget target)
