@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class GameEvents : MonoBehaviour
 {
     private static GameEvents singleton;
-    private static GameEvents Singleton => GetSingleton();
+    private static GameEvents Singleton => singleton ? singleton : singleton = FindObjectOfType<GameEvents>();
 
     public UnityEvent pressedCorrect = new UnityEvent();
     public UnityEvent pressedGood = new UnityEvent();
@@ -20,6 +20,7 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<int> cancelledCombo = new UnityEvent<int>();
     public UnityEvent<GameObject> newEnemyNote = new UnityEvent<GameObject>();
     public UnityEvent<GameObject> newPlayerNote = new UnityEvent<GameObject>();
+    public UnityEvent gameOver = new UnityEvent();
 
     public static UnityEvent PressedCorrect => Singleton?.pressedCorrect;
     public static UnityEvent PressedGood => Singleton?.pressedGood;
@@ -35,17 +36,5 @@ public class GameEvents : MonoBehaviour
     public static UnityEvent<int> CancelledCombo => Singleton?.cancelledCombo;
     public static UnityEvent<GameObject> NewEnemyNote => Singleton?.newEnemyNote;
     public static UnityEvent<GameObject> NewPlayerNote => Singleton?.newPlayerNote;
-
-    private static GameEvents GetSingleton()
-    {
-        if (singleton)
-        {
-            return singleton;
-        }
-        else
-        {
-            singleton = FindObjectOfType<GameEvents>();
-            return singleton;
-        }
-    }
+    public static UnityEvent GameOver => Singleton?.gameOver;
 }
