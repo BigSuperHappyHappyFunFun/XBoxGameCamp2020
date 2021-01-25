@@ -9,6 +9,8 @@ namespace SailorStrike
 {
     public class UnityBuild
     {
+        private const string URL = "https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/";
+
         private static string[] ActiveScenes => EditorBuildSettings.scenes
                 .Where(s => s.enabled)
                 .Select(s => s.path)
@@ -68,26 +70,16 @@ namespace SailorStrike
             Process.Start("git", "push --tags");
             UnityEngine.Debug.Log($"Pushing tags...Complete!");
             gameSettings.microVersion++;
-            UnityEngine.Debug.Log($"Game Settings updated to: v{gameSettings.Version}");
+            var newTag = $"v{gameSettings.Version}";
+            UnityEngine.Debug.Log($"Game Settings updated to: {newTag}");
             EditorUtility.SetDirty(gameSettings);
             AssetDatabase.SaveAssets();
-            UnityEngine.Debug.Log($"Pushing tags...");
             Process.Start("git", $"add {gameSettingsPath}");
-            Process.Start("git", $"commit -m \"Increment GameSettings Version to {tag}\"");
+            Process.Start("git", $"commit -m \"Increment GameSettings Version to {newTag}\"");
             Process.Start("git", $"push");
             UnityEngine.Debug.Log($"Increment Version on Repository...");
-            UnityEngine.Debug.Log($"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag} copied to clipboard!");
-            GUIUtility.systemCopyBuffer = $"https://bigsuperhappyhappyfunfun.github.io/XBoxGameCamp2020/{tag}";
-        }
-
-        [MenuItem("Build/TestGit")]
-        public static void TestGit()
-        {
-            var gameSettingsGUIDs = AssetDatabase.FindAssets("t:GameSettings");
-            var gameSettingsPath = AssetDatabase.GUIDToAssetPath(gameSettingsGUIDs[0]);
-            var gameSettings = AssetDatabase.LoadAssetAtPath<GameSettings>(gameSettingsPath);
-            var tag = $"v{gameSettings.Version}";
-            UnityEngine.Debug.Log(gameSettingsPath);
+            UnityEngine.Debug.Log($"{URL}{tag} copied to clipboard!");
+            GUIUtility.systemCopyBuffer = $"{URL}{tag}";
         }
 
         private static BuildReport Build(BuildTargetGroup targetGroup, BuildTarget target)
