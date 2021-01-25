@@ -78,13 +78,10 @@ public class LevelData : MonoBehaviour
                 buttonRequest.speed = System.Convert.ToSingle(buttonRequestStrings[3]);
                 buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start}";// - {buttonRequest.end}";
                 buttonRequests.Add(buttonRequest);
-                if (sheet == "DemoLevel")
-                {
-                    var combo = buttonRequestStrings.Length >= 6 ? buttonRequestStrings[5] : "";
-                    buttonRequest.owner = buttonRequestStrings[4];
-                    buttonRequest.combo = combo;
-                    buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} [{buttonRequest.combo}] by {buttonRequest.owner}";
-                }
+                var combo = buttonRequestStrings.Length >= 6 ? buttonRequestStrings[5] : "";
+                buttonRequest.owner = buttonRequestStrings[4];
+                buttonRequest.combo = combo;
+                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} [{buttonRequest.combo}] by {buttonRequest.owner}";
             }
             catch (Exception ex)
             {

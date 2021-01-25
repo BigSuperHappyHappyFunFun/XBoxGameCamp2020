@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465c28fb02996a94ca0694e1b2fe6d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: LevelGoogleSheet
+  nextScene: Level1
   prevButton: {fileID: 1290840249}
   nextButton: {fileID: 629258274}
   virtualCamera: {fileID: 594042724}

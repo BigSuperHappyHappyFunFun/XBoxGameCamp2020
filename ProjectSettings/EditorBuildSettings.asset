@@ -15,12 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Comic.unity
     guid: 63a75f893f867de4394549c5cd0b2393
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/LevelGoogleSheet.unity
-    guid: 40cb155a06c2c3d46a746dfbfc55e69a
-  - enabled: 1
     path: Assets/Scenes/InputTest.unity
     guid: 8cbf1f1909b649242bbd16d305a76223
+  - enabled: 1
+    path: Assets/Scenes/StageSelect.unity
+    guid: ef77902b45274904596128e2d05217d4
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 8a1b07e1237535b499b4855f590e748e
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: faec0b5b35f0001419c7060aab86c9a6
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 56212483949f7834eb741113f58d5e40
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 33df95bd4e77e3144a9555541203cbc3
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 76e84b1bdc113d24ab02b76e6a46b993
   m_configObjects: {}
