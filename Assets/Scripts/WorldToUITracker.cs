@@ -19,7 +19,7 @@ public class WorldToUITracker : MonoBehaviour
         uiPosition = UI.position;
         uiPosition.y -= UI.rect.height / 2;
         worldPosition = camera.ScreenToWorldPoint(uiPosition);
-        worldPosition.z = 0;
+        worldPosition.z = -1;
         transform.position = worldPosition;
     }
 }
