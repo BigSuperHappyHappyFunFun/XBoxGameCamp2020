@@ -7,8 +7,21 @@ public class DoSomethingAfterDuration : MonoBehaviour
 {
     public float duration = 1;
     public UnityEvent something;
+    public Coroutine coroutine;
 
-    private IEnumerator Start()
+    private void OnEnable()
+    {
+        if (coroutine != null) StopCoroutine(coroutine);
+        coroutine = StartCoroutine(Something());
+    }
+
+    private void OnDisable()
+    {
+        if (coroutine != null) StopCoroutine(coroutine);
+        coroutine = null;
+    }
+
+    private IEnumerator Something()
     {
         yield return new WaitForSeconds(duration);
         something.Invoke();
