@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2140534360016071359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2496089357478765417}
+  - component: {fileID: 5598293780712256458}
+  m_Layer: 0
+  m_Name: ComboSoundSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2496089357478765417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140534360016071359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6651590597005839017}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5598293780712256458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140534360016071359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82858c1137ff3e4689a2d75392764b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPrefabs:
+  - {fileID: 5904949437008937023, guid: 82ac5f302836e6e4a92547de9257fb1e, type: 3}
 --- !u!1 &5110054537018034575
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +91,6 @@ MonoBehaviour:
   soundPrefabs:
   - {fileID: 5930735375281186334, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
   - {fileID: 4765866068435331501, guid: c376d74753b2c534290d35b3ac01ec0a, type: 3}
-  - {fileID: 8532423052039376772, guid: e4406f622463a4a478edd1e1c6f8aaab, type: 3}
 --- !u!1 &6651590597005839023
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +125,7 @@ Transform:
   - {fileID: 6651590597520611846}
   - {fileID: 917146560924964701}
   - {fileID: 3822288440360646329}
+  - {fileID: 2496089357478765417}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,10 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6651590597005839018}
   crossFadeTime: 0.1
-  numberOfSuccesses: 3
-  numberOfFailures: 2
-  successIndex: 0
-  failureIndex: 0
+  isComboSuccessThisFrame: 0
 --- !u!114 &6651590597005839028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,4 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41471de070063b4a998ee238695a9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPrefab: {fileID: 5904949437008937023, guid: 4d7d5f170b1940b42a0b1e66c122da3e, type: 3}
+  soundPrefabs:
+  - {fileID: 5904949437008937023, guid: 4d7d5f170b1940b42a0b1e66c122da3e, type: 3}
+  - {fileID: 5904949437008937023, guid: 2e2ed4f4627a35d44a45ba4c0caa93b2, type: 3}
+  - {fileID: 5904949437008937023, guid: 45adcc7577006774d9cbe2d434438cf5, type: 3}

@@ -13,15 +13,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930735375281186334, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_Name
-      value: Trumpet01
+      value: FailedNote 2
       objectReference: {fileID: 0}
     - target: {fileID: 7485295129498803254, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 611b9da88d410ba4a87e96dd53c3903d, type: 3}
+      objectReference: {fileID: 8300000, guid: 35b6f45caf45c624e91b2d7c15ce5aff, type: 3}
     - target: {fileID: 7485295129498803254, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_Volume
-      value: 0.107
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485295129498803254, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485295129498803254, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
+      propertyPath: Priority
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 7814606448338402741, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
       propertyPath: m_LocalPosition.x
