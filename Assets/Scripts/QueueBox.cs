@@ -78,7 +78,7 @@ public class QueueBox : MonoBehaviour
     private void SetScale()
     {
         var count = notes.Count;
-        var width = (1 + spacing) * count - spacing;
+        var width = (1.25f + spacing) * count - spacing;
         var scale = transform.localScale;
 
         if (count == 0)

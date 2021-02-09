@@ -13,6 +13,7 @@ public class InputChecker : MonoBehaviour
     public Transform closestButtonRequest;
     public CharacterAnimationState characterAnimationState;
     public Animator animator;
+    public TargetSpriteAnimate targetSpriteAnimate;
 
     public int bestCount = 0;
     public int betterCount = 0;
@@ -29,6 +30,7 @@ public class InputChecker : MonoBehaviour
     private void OnValidate()
     {
         if (!animator) animator = GetComponent<Animator>();
+        if (!targetSpriteAnimate) targetSpriteAnimate = transform.parent.GetComponentInChildren<TargetSpriteAnimate>();
     }
 
     private void Update()
@@ -45,10 +47,12 @@ public class InputChecker : MonoBehaviour
         {
             var distance = dist(closestButtonRequest, transform);
             animator.SetBool("IsReady", distance < xExtent * 1.1f);
+            targetSpriteAnimate.PlayAnimation(closestButtonRequest.name);
         }
         else
         {
             animator.SetBool("IsReady", false);
+            targetSpriteAnimate.PlayAnimation("None");
         }
 
         if (anyPressed && closestButtonRequest)
@@ -59,14 +63,14 @@ public class InputChecker : MonoBehaviour
                 if (IsCorrectButton())
                 {
                     bestCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = bestColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(bestColor);
                     GameEvents.PressedCorrect.Invoke();
                     GameEvents.PressedPerfect.Invoke();
                 }
                 else
                 {
                     wrongButtonCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(wrongColor);
                     GameEvents.Failed.Invoke();
                     GameEvents.PressedWrong.Invoke();
                 }
@@ -77,14 +81,14 @@ public class InputChecker : MonoBehaviour
                 if (IsCorrectButton())
                 {
                     betterCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = betterColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(betterColor);
                     GameEvents.PressedCorrect.Invoke();
                     GameEvents.PressedGreat.Invoke();
                 }
                 else
                 {
                     wrongButtonCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(wrongColor);
                     GameEvents.Failed.Invoke(); 
                     GameEvents.PressedWrong.Invoke();
                 }
@@ -95,14 +99,14 @@ public class InputChecker : MonoBehaviour
                 if (IsCorrectButton())
                 {
                     goodCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = goodColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(goodColor);
                     GameEvents.PressedCorrect.Invoke();
                     GameEvents.PressedGood.Invoke();
                 }
                 else
                 {
                     wrongButtonCount++;
-                    closestButtonRequest.GetComponent<SpriteRenderer>().color = wrongColor;
+                    closestButtonRequest.GetComponent<ButtonRequestImage>().SetColor(wrongColor);
                     GameEvents.Failed.Invoke();
                     GameEvents.PressedWrong.Invoke();
                 }
@@ -117,7 +121,7 @@ public class InputChecker : MonoBehaviour
             {
                 missCount++;
                 buttonRequests.RemoveAt(i);
-                buttonRequest.GetComponent<SpriteRenderer>().color = missColor;
+                buttonRequest.GetComponent<ButtonRequestImage>().SetColor(missColor);
                 GameEvents.Failed.Invoke();
                 GameEvents.Missed.Invoke();
             }
@@ -127,10 +131,10 @@ public class InputChecker : MonoBehaviour
     private bool IsCorrectButton()
     {
         var name = closestButtonRequest.name;
-        if (name == "arrowUp") return input.buttonUpPressed;
-        if (name == "arrowDown") return input.buttonDownPressed;
-        if (name == "arrowLeft") return input.buttonLeftPressed;
-        if (name == "arrowRight") return input.buttonRightPressed;
+        if (name == "Up") return input.buttonUpPressed;
+        if (name == "Down") return input.buttonDownPressed;
+        if (name == "Left") return input.buttonLeftPressed;
+        if (name == "Right") return input.buttonRightPressed;
         return false;
     }
 
