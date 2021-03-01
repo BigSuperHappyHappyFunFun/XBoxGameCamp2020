@@ -21,6 +21,8 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<GameObject> newEnemyNote = new UnityEvent<GameObject>();
     public UnityEvent<GameObject> newPlayerNote = new UnityEvent<GameObject>();
     public UnityEvent gameOver = new UnityEvent();
+    public UnityEvent<Grouping> newEnemyNoteGrouping = new UnityEvent<Grouping>();
+    public UnityEvent<Grouping> newPlayerNoteGrouping = new UnityEvent<Grouping>();
 
     public static UnityEvent PressedCorrect => Singleton?.pressedCorrect;
     public static UnityEvent PressedGood => Singleton?.pressedGood;
@@ -37,4 +39,6 @@ public class GameEvents : MonoBehaviour
     public static UnityEvent<GameObject> NewEnemyNote => Singleton?.newEnemyNote;
     public static UnityEvent<GameObject> NewPlayerNote => Singleton?.newPlayerNote;
     public static UnityEvent GameOver => Singleton?.gameOver;
+    public static UnityEvent<Grouping> NewEnemyNoteGrouping => Singleton?.newEnemyNoteGrouping;
+    public static UnityEvent<Grouping> NewPlayerNoteGrouping => Singleton?.newPlayerNoteGrouping;
 }

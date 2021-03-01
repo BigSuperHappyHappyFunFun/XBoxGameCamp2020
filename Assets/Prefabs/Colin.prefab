@@ -89,8 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPrefabs:
-  - {fileID: 5930735375281186334, guid: 083e6eb84117c4e4b88d2c81d43e8de2, type: 3}
-  - {fileID: 4765866068435331501, guid: c376d74753b2c534290d35b3ac01ec0a, type: 3}
+  - {fileID: 8532423052039376772, guid: d3991a98766de764095939158fc64181, type: 3}
+  - {fileID: 8532423052039376772, guid: a4eadfe656e807f4cb9b24b102427418, type: 3}
+  - {fileID: 8532423052039376772, guid: cd655c830eebcfc419c0564042e53459, type: 3}
 --- !u!1 &6651590597005839023
 GameObject:
   m_ObjectHideFlags: 0

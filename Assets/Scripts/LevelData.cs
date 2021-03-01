@@ -98,30 +98,34 @@ public class LevelData : MonoBehaviour
     private void AssignComboStart()
     {
         var prevCombo = "";
+        var prevOwner = "";
         for (var i = 0; i < buttonRequests.Count; i++)
         {
             if (!string.IsNullOrEmpty(buttonRequests[i].combo))
-                if (prevCombo != buttonRequests[i].combo)
+                if (prevCombo != buttonRequests[i].combo || prevOwner != buttonRequests[i].owner)
                 {
                     buttonRequests[i].isComboStart = true;
                     buttonRequests[i].name += "*";
                 }
             prevCombo = buttonRequests[i].combo;
+            prevOwner = buttonRequests[i].owner;
         }
     }
 
     private void AssignComboEnd()
     {
         var prevCombo = "";
+        var prevOwner = "";
         for (var i = buttonRequests.Count - 1; i >= 0; i--)
         {
             if (!string.IsNullOrEmpty(buttonRequests[i].combo))
-                if (prevCombo != buttonRequests[i].combo)
+                if (prevCombo != buttonRequests[i].combo || prevOwner != buttonRequests[i].owner)
                 {
                     buttonRequests[i].isComboEnd = true;
                     buttonRequests[i].name += "!";
                 }
             prevCombo = buttonRequests[i].combo;
+            prevOwner = buttonRequests[i].owner;
         }
     }
 }

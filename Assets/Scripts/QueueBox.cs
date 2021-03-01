@@ -20,12 +20,26 @@ public class QueueBox : MonoBehaviour
     {
         GameEvents.NewEnemyNote.Add(AddNote);
         GameEvents.NewPlayerNote.Add(RemoveNote);
+        GameEvents.NewEnemyNoteGrouping?.Add(AddGrouping);
+        GameEvents.NewPlayerNoteGrouping?.Add(RemoveGrouping);
     }
 
     private void OnDisable()
     {
         GameEvents.NewEnemyNote?.Remove(AddNote);
         GameEvents.NewPlayerNote?.Remove(RemoveNote);
+        GameEvents.NewEnemyNoteGrouping?.Remove(AddGrouping);
+        GameEvents.NewPlayerNoteGrouping?.Remove(RemoveGrouping);
+    }
+
+    public void AddGrouping(Grouping grouping)
+    {
+        Debug.Log("Add: " + grouping);
+    }
+
+    public void RemoveGrouping(Grouping grouping)
+    {
+        Debug.Log("Remove: " + grouping);
     }
 
     public void AddNote(GameObject noteGameObject)

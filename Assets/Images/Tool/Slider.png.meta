@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cf89f0ae53971fa40aac1f22bf36d5dd
+guid: 907c499c1e401484693e7c82edfa36cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3059693627741966206
-    second: noun_pause button_2909931_0
+      213: 9169877530624898698
+    second: Slider_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 217, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -128,22 +128,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: noun_pause button_2909931_0
+      name: Slider_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 21
-        width: 598
-        height: 598
+        x: 140
+        y: 29
+        width: 344
+        height: 582
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7f061bb427367a20800000000000000
-      internalID: 3059693627741966206
+      spriteID: a86bbbea703f14f70800000000000000
+      internalID: 9169877530624898698
       vertices: []
       indices: 
       edges: []
