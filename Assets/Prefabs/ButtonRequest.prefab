@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2693498078927505717}
   - component: {fileID: 6523977839761791071}
   - component: {fileID: 1608016551431451981}
+  - component: {fileID: -247459983917276284}
   m_Layer: 0
   m_Name: ButtonRequest
   m_TagString: Untagged
@@ -102,6 +103,20 @@ MonoBehaviour:
   downArrow: {fileID: 3273355624601066820}
   leftArrow: {fileID: 1210073686626150994}
   rightArrow: {fileID: 1394084173504985395}
+--- !u!114 &-247459983917276284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651970213961274403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c441d23aa3facdd4c95a1192eb42dc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 1, y: 1, z: 1}
+  speed: 4
 --- !u!1001 &1042105842736352253
 PrefabInstance:
   m_ObjectHideFlags: 0

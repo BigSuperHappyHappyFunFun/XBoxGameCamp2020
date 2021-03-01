@@ -74,6 +74,7 @@ public class InputChecker : MonoBehaviour
                     GameEvents.Failed.Invoke();
                     GameEvents.PressedWrong.Invoke();
                 }
+                closestButtonRequest.GetComponent<ScaleTowards>().SetTarget(Vector3.zero);
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
             else if (distance <= betterThreshold * xExtent)
@@ -92,6 +93,7 @@ public class InputChecker : MonoBehaviour
                     GameEvents.Failed.Invoke(); 
                     GameEvents.PressedWrong.Invoke();
                 }
+                closestButtonRequest.GetComponent<ScaleTowards>().SetTarget(Vector3.zero);
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
             else if (distance <= goodThreshold * xExtent)
@@ -110,6 +112,7 @@ public class InputChecker : MonoBehaviour
                     GameEvents.Failed.Invoke();
                     GameEvents.PressedWrong.Invoke();
                 }
+                closestButtonRequest.GetComponent<ScaleTowards>().SetTarget(Vector3.zero);
                 buttonRequests.Remove(closestButtonRequest.gameObject);
             }
         }
@@ -122,6 +125,7 @@ public class InputChecker : MonoBehaviour
                 missCount++;
                 buttonRequests.RemoveAt(i);
                 buttonRequest.GetComponent<ButtonRequestImage>().SetColor(missColor);
+                buttonRequest.GetComponent<ScaleTowards>().SetTarget(Vector3.zero);
                 GameEvents.Failed.Invoke();
                 GameEvents.Missed.Invoke();
             }

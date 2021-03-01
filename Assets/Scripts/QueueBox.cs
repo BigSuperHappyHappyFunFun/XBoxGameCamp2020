@@ -5,11 +5,21 @@ using UnityEngine;
 
 public class QueueBox : MonoBehaviour
 {
-    public float speed = 6;
-    public float spacing = 0.1f;
+    public ButtonRequestSpawn buttonRequestSpawn;
+    public InputChecker inputChecker;
+    public float padding = 0.1f;
+    public float scaleSpeed = 6;
     public ScaleTowards scaleTowards;
-    public Vector3[] targets = new Vector3[0];
     public List<MoveTowards> notes = new List<MoveTowards>();
+    public Grouping currentGrouping;
+    public float startTime;
+    public float scaleFactor = 1;
+    public float comboDuration = 0;
+
+    private Vector3 Scale => transform.localScale;
+    public float GameTime => buttonRequestSpawn.time;
+    public float DeltaTime => startTime != 0 ? GameTime - startTime : 0;
+    public float ClampDeltaTime => Mathf.Min(comboDuration, DeltaTime);
 
     private void OnValidate()
     {
@@ -19,7 +29,6 @@ public class QueueBox : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.NewEnemyNote.Add(AddNote);
-        GameEvents.NewPlayerNote.Add(RemoveNote);
         GameEvents.NewEnemyNoteGrouping?.Add(AddGrouping);
         GameEvents.NewPlayerNoteGrouping?.Add(RemoveGrouping);
     }
@@ -27,19 +36,24 @@ public class QueueBox : MonoBehaviour
     private void OnDisable()
     {
         GameEvents.NewEnemyNote?.Remove(AddNote);
-        GameEvents.NewPlayerNote?.Remove(RemoveNote);
         GameEvents.NewEnemyNoteGrouping?.Remove(AddGrouping);
         GameEvents.NewPlayerNoteGrouping?.Remove(RemoveGrouping);
     }
 
-    public void AddGrouping(Grouping grouping)
+    private void Update()
     {
-        Debug.Log("Add: " + grouping);
+        if (currentGrouping != null && currentGrouping.isEnemyGroup)
+        {
+            SetScale();
+            SetTargets();
+        }
     }
 
-    public void RemoveGrouping(Grouping grouping)
+    public void AddGrouping(Grouping grouping)
     {
-        Debug.Log("Remove: " + grouping);
+        currentGrouping = grouping;
+        comboDuration = grouping.end - grouping.start;
+        startTime = GameTime;
     }
 
     public void AddNote(GameObject noteGameObject)
@@ -47,57 +61,56 @@ public class QueueBox : MonoBehaviour
         var note = noteGameObject.GetComponent<MoveTowards>();
         if (note)
         {
+            var target = transform.position + (Vector3.right * ClampDeltaTime / 2f);
+            var distance = Vector3.Distance(transform.position, noteGameObject.transform.position);
+            var speed = distance / buttonRequestSpawn.secondsFromBadGuyToQueueBox;
+            note.SetTarget(target, speed);
             notes.Add(note);
-            SetTargets();
-            SetScale();
         }
     }
 
-    public void RemoveNote(GameObject noteGameObject)
+    public void RemoveGrouping(Grouping grouping)
     {
-        var note = noteGameObject.GetComponent<MoveTowards>();
-        if (note)
+        if (currentGrouping != null)
         {
-            Destroy(notes[0].gameObject);
-            notes.RemoveAt(0);
-            SetTargets();
-            SetScale();
+            for (var i = 0; i < notes.Count; i++)
+            {
+                var note = notes[i];
+                var buttonRequest = currentGrouping.buttonRequests[i];
+                var target = inputChecker.transform.position;
+                var distance = Vector3.Distance(note.transform.position, target);
+                var deltaTime = buttonRequest.start - currentGrouping.start;
+                var time = buttonRequestSpawn.secondsFromQueueBoxToCollin + deltaTime;
+                var speed = distance / time;
+                target -= Vector3.right * 5;
+                note.SetTarget(target, speed);
+                inputChecker.buttonRequests.Add(note.gameObject);
+                GameEvents.NewPlayerNote.Invoke(note.gameObject);
+                Destroy(note.gameObject, time + 1);
+            }
+            notes.Clear();
+            scaleTowards.SetTarget(Scale.SetX(0), scaleSpeed);
         }
+        currentGrouping = grouping;
+        startTime = 0;
     }
 
     private void SetTargets()
     {
-        var count = notes.Count;
-        if (count == 0)
-            targets = new Vector3[0];
-        else
+        for (var i = 0; i < notes.Count; i++)
         {
-            targets = new Vector3[count];
-            var width = (1 + spacing) * count - spacing;
-            for (var i = 0; i < count; i++)
-            {
-                var myPosition = transform.position;
-                var offset = -width / 2 + 0.5f;
-                var positionX = (1 + spacing) * i;
-                positionX += offset;
-                positionX += myPosition.x;
-                targets[i] = new Vector3(positionX, myPosition.y, myPosition.z);
-            }
+            var secondsFromStart = currentGrouping.buttonRequests[i].start - currentGrouping.start;
+            var boxSize = ClampDeltaTime * scaleFactor;
+            boxSize -= padding;
+            var target = transform.position;
+            target += Vector3.right * secondsFromStart / comboDuration * boxSize;
+            target -= Vector3.right * boxSize / 2;
+            notes[i].SetTarget(target, notes[i].speed);
         }
-
-        for (var i = 0; i < count; i++)
-            notes[i].SetTarget(targets[i], speed);
     }
 
     private void SetScale()
     {
-        var count = notes.Count;
-        var width = (1.25f + spacing) * count - spacing;
-        var scale = transform.localScale;
-
-        if (count == 0)
-            scaleTowards.SetTarget(new Vector3(0, scale.y, scale.z), speed);
-        else
-            scaleTowards.SetTarget(new Vector3(width, scale.y, scale.z), speed);
+        scaleTowards.SetTarget(Scale.SetX(ClampDeltaTime * scaleFactor), scaleSpeed);
     }
 }
