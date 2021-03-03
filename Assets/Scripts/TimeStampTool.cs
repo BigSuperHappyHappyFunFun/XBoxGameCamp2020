@@ -20,27 +20,26 @@ public class TimeStampTool : MonoBehaviour
     public AudioSource audioSource;
     public List<TimeStamp> timeStamps = new List<TimeStamp>();
     public GameInput input;
-
-    private void OnEnable()
-    {
-        PopulateMusicOptions();
-        dropdown.onValueChanged.Add(ChangeMusic);
-        playButton.onClick.Add(TogglePlayPause);
-        resetButton.onClick.Add(Reset);
-        mainMenuButton.onClick.Add(MainMenu);
-    }
+    public TextMeshProUGUI timeDisplayText;
 
     private void Update()
     {
         if (audioSource.clip && audioSource.isPlaying)
         {
             slider.enabled = true;
-            slider.value = audioSource.time / audioSource.clip.length;
+                slider.value = audioSource.time / audioSource.clip.length;
         }
         else if (!audioSource.clip)
         {
             slider.enabled = false;
             slider.value = 0;
+            timeDisplayText.text = "0.000";
+        }
+
+        if (audioSource.clip && slider)
+        {
+            var time = slider.value * audioSource.clip.length;
+            timeDisplayText.text = time.ToString("0.000");
         }
 
         if (audioSource.isPlaying)
@@ -54,6 +53,15 @@ public class TimeStampTool : MonoBehaviour
             foreach (var timeStamp in timeStamps.OrderBy(x => x.time))
                 inputField.text += $"{timeStamp.time},{timeStamp.time},{timeStamp.button}\n";
         }
+    }
+
+    private void OnEnable()
+    {
+        PopulateMusicOptions();
+        dropdown.onValueChanged.Add(ChangeMusic);
+        playButton.onClick.Add(TogglePlayPause);
+        resetButton.onClick.Add(Reset);
+        mainMenuButton.onClick.Add(MainMenu);
     }
 
     private void PopulateMusicOptions()
