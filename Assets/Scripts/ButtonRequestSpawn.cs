@@ -12,6 +12,7 @@ public class ButtonRequestSpawn : MonoBehaviour
     public float time = 0;
     public float secondsFromBadGuyToQueueBox = 0.5f;
     public float secondsFromQueueBoxToCollin = 3;
+    public float displayDelay = 1;
 
     private void Update()
     {
@@ -23,43 +24,33 @@ public class ButtonRequestSpawn : MonoBehaviour
         if (buttonRequest.isComboStart)
             currentGrouping = GetGrouping();
 
+        var comboDuration = currentGrouping.end - currentGrouping.start;
         var timeToTarget = secondsFromBadGuyToQueueBox;
-        if (buttonRequest.owner == "Player")
-            timeToTarget = secondsFromQueueBoxToCollin;
-
-        var startTime = buttonRequest.start - timeToTarget;
+        timeToTarget += comboDuration;
+        timeToTarget += secondsFromQueueBoxToCollin;
+        timeToTarget += displayDelay;
+        
+        var startTime = buttonRequest.time - timeToTarget;
         var timeForNextButton = time >= startTime;
-        if (timeForNextButton)
-        {
-            if (buttonRequest.owner == "Player")
-            {
-                if (buttonRequest.isComboStart)
-                    GameEvents.NewPlayerNoteGrouping.Invoke(currentGrouping);
-            }
-            else
-            {
-                var buttonRequestGameObject = Instantiate(buttonRequestPrefab, spawn.position, Quaternion.identity, transform);
-                var buttonRequestCombo = buttonRequestGameObject.GetComponent<ButtonRequestCombo>();
-                var buttonRequestAnimator = buttonRequestGameObject.GetComponent<Animator>();
-                var buttonRequestImage = buttonRequestGameObject.GetComponent<ButtonRequestImage>();
-                var buttonRequestMoveTowards = buttonRequestGameObject.GetComponent<MoveTowards>();
-                buttonRequestImage.ShowArrow(buttonRequest.button);
-                buttonRequestCombo.combo = buttonRequest.combo;
-                buttonRequestCombo.isStart = buttonRequest.isComboStart;
-                buttonRequestCombo.isEnd = buttonRequest.isComboEnd;
-                buttonRequestGameObject.name = buttonRequest.button;
-                buttonRequestAnimator.speed = buttonRequest.speed;
-                currentGrouping.moveTowards.Add(buttonRequestMoveTowards);
+        if (!timeForNextButton) return;
+        var buttonRequestGameObject = Instantiate(buttonRequestPrefab, spawn.position, Quaternion.identity, transform);
+        var buttonRequestCombo = buttonRequestGameObject.GetComponent<ButtonRequestCombo>();
+        var buttonRequestAnimator = buttonRequestGameObject.GetComponent<Animator>();
+        var buttonRequestImage = buttonRequestGameObject.GetComponent<ButtonRequestImage>();
+        var buttonRequestMoveTowards = buttonRequestGameObject.GetComponent<MoveTowards>();
+        buttonRequestImage.ShowArrow(buttonRequest.button);
+        buttonRequestCombo.combo = buttonRequest.combo;
+        buttonRequestCombo.isStart = buttonRequest.isComboStart;
+        buttonRequestCombo.isEnd = buttonRequest.isComboEnd;
+        buttonRequestGameObject.name = buttonRequest.button;
+        currentGrouping.moveTowards.Add(buttonRequestMoveTowards);
 
-                buttonRequestAnimator.enabled = false;
-                buttonRequestGameObject.transform.localScale = Vector3.one;
-                if (buttonRequest.isComboStart)
-                    GameEvents.NewEnemyNoteGrouping.Invoke(currentGrouping);
-                GameEvents.NewEnemyNote.Invoke(buttonRequestGameObject);
-            }
-
-            index++;
-        }
+        buttonRequestAnimator.enabled = false;
+        buttonRequestGameObject.transform.localScale = Vector3.one;
+        if (buttonRequest.isComboStart)
+            GameEvents.NewEnemyNoteGrouping.Invoke(currentGrouping);
+        GameEvents.NewEnemyNote.Invoke(buttonRequestGameObject);
+        index++;
     }
 
     private Grouping GetGrouping()
@@ -74,16 +65,14 @@ public class ButtonRequestSpawn : MonoBehaviour
             var buttonRequest = levelData.buttonRequests[i];
             grouping.buttonRequests.Add(buttonRequest);
             if (buttonRequest.isComboStart)
-                if (buttonRequest.owner == "Enemy")
-                    grouping.isEnemyGroup = true;
+                grouping.isEnemyGroup = true;
             if (buttonRequest.isComboStart)
-                grouping.start = buttonRequest.start;
-            if (buttonRequest.isComboEnd)
-            {
-                grouping.end = buttonRequest.start;
-                break;
-            }
+                grouping.start = buttonRequest.time;
+            if (!buttonRequest.isComboEnd) continue;
+            grouping.end = buttonRequest.time;
+            break;
         }
+
         return grouping;
     }
 }

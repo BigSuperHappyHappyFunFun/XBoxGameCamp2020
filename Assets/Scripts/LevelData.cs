@@ -12,11 +12,8 @@ public class LevelData : MonoBehaviour
     public class ButtonRequest
     {
         public string name;
+        public float time;
         public string button;
-        public float start;
-        public float end;
-        public float speed;
-        public string owner;
         public string combo;
         public bool isComboStart;
         public bool isComboEnd;
@@ -26,9 +23,11 @@ public class LevelData : MonoBehaviour
     public string sheet = "Sheet1";
     public List<ButtonRequest> buttonRequests;
     public UnityEvent levelLoaded;
-
+    public ButtonRequestSpawn buttonRequestSpawn;
+    
     private IEnumerator Start()
     {
+        if (!buttonRequestSpawn) buttonRequestSpawn = FindObjectOfType<ButtonRequestSpawn>(true);
         if (level)
         {
             levelLoaded.Invoke();
@@ -36,19 +35,51 @@ public class LevelData : MonoBehaviour
         }
         else
         {
-            var search = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", sheet);
             yield return GoogleAuthrisationHelper.CheckForRefreshOfToken();
-            SpreadsheetManager.Read(search, GetLevelText);
+            var settingsSearch = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", "Settings");
+            SpreadsheetManager.Read(settingsSearch, SetSettings);
+            
+            var levelSearch = new GSTU_Search("1mr7IMpoF33-i6K8jZh4LotPitlpKIG72MOqd6zweR_E", sheet);
+            SpreadsheetManager.Read(levelSearch, GetLevelText);
         }
     }
 
-    private void GetLevelText(GstuSpreadSheet sheet)
+    private void SetSettings(GstuSpreadSheet spreadsheet)
+    {
+        var csv = "";
+        for (var i = 0; i < spreadsheet.rows.primaryDictionary.Count; i++)
+        {
+            var key = spreadsheet.rows.primaryDictionary.Keys.ElementAt(i);
+            var row = spreadsheet.rows.primaryDictionary[key];
+            for (var j = 0; j < row.Count; j++)
+            {
+                var cell = row[j];
+                csv += j == 0 ? cell.value : "," + cell.value;
+            }
+            csv += "\n";
+        }
+
+        if (!buttonRequestSpawn) return;
+        var lines = csv.Split('\n');
+        foreach (var line in lines)
+        {
+            var columns = line.Split(',');
+            if (columns[0] == "Seconds from Bad Guy to Queue Box")
+                buttonRequestSpawn.secondsFromBadGuyToQueueBox = Convert.ToSingle(columns[1]);
+            if (columns[0] == "Queue Box Display Delay")
+                buttonRequestSpawn.displayDelay = Convert.ToSingle(columns[1]);
+            if (columns[0] == "Seconds from Queue Box to Collin")
+                buttonRequestSpawn.secondsFromQueueBoxToCollin = Convert.ToSingle(columns[1]);
+        }
+    }
+    
+    private void GetLevelText(GstuSpreadSheet spreadsheet)
     {
         var levelText = "";
-        for (var i = 0; i < sheet.rows.primaryDictionary.Count; i++)
+        for (var i = 0; i < spreadsheet.rows.primaryDictionary.Count; i++)
         {
-            var key = sheet.rows.primaryDictionary.Keys.ElementAt(i);
-            var row = sheet.rows.primaryDictionary[key];
+            var key = spreadsheet.rows.primaryDictionary.Keys.ElementAt(i);
+            var row = spreadsheet.rows.primaryDictionary[key];
             for (var j = 0; j < row.Count; j++)
             {
                 var cell = row[j];
@@ -72,16 +103,13 @@ public class LevelData : MonoBehaviour
             var buttonRequest = new ButtonRequest();
             try
             {
-                buttonRequest.start = System.Convert.ToSingle(buttonRequestStrings[0]);
-                //buttonRequest.end = System.Convert.ToSingle(buttonRequestStrings[1]);
-                buttonRequest.button = buttonRequestStrings[2];
-                buttonRequest.speed = System.Convert.ToSingle(buttonRequestStrings[3]);
-                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start}";// - {buttonRequest.end}";
+                buttonRequest.time = Convert.ToSingle(buttonRequestStrings[0]);
+                buttonRequest.button = buttonRequestStrings[1];
+                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.time}";
                 buttonRequests.Add(buttonRequest);
-                var combo = buttonRequestStrings.Length >= 6 ? buttonRequestStrings[5] : "";
-                buttonRequest.owner = buttonRequestStrings[4];
+                var combo = buttonRequestStrings.Length >= 3 ? buttonRequestStrings[2] : "";
                 buttonRequest.combo = combo;
-                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.start} [{buttonRequest.combo}] by {buttonRequest.owner}";
+                buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.time} [{buttonRequest.combo}]";
             }
             catch (Exception ex)
             {
@@ -102,13 +130,12 @@ public class LevelData : MonoBehaviour
         for (var i = 0; i < buttonRequests.Count; i++)
         {
             if (!string.IsNullOrEmpty(buttonRequests[i].combo))
-                if (prevCombo != buttonRequests[i].combo || prevOwner != buttonRequests[i].owner)
+                if (prevCombo != buttonRequests[i].combo)
                 {
                     buttonRequests[i].isComboStart = true;
                     buttonRequests[i].name += "*";
                 }
             prevCombo = buttonRequests[i].combo;
-            prevOwner = buttonRequests[i].owner;
         }
     }
 
@@ -119,13 +146,12 @@ public class LevelData : MonoBehaviour
         for (var i = buttonRequests.Count - 1; i >= 0; i--)
         {
             if (!string.IsNullOrEmpty(buttonRequests[i].combo))
-                if (prevCombo != buttonRequests[i].combo || prevOwner != buttonRequests[i].owner)
+                if (prevCombo != buttonRequests[i].combo)
                 {
                     buttonRequests[i].isComboEnd = true;
                     buttonRequests[i].name += "!";
                 }
             prevCombo = buttonRequests[i].combo;
-            prevOwner = buttonRequests[i].owner;
         }
     }
 }
