@@ -59,18 +59,18 @@ public class LevelData : MonoBehaviour
             csv += "\n";
         }
 
-        if (!buttonRequestSpawn) return;
-        var lines = csv.Split('\n');
-        foreach (var line in lines)
-        {
-            var columns = line.Split(',');
-            if (columns[0] == "Seconds from Bad Guy to Queue Box")
-                buttonRequestSpawn.secondsFromBadGuyToQueueBox = Convert.ToSingle(columns[1]);
-            if (columns[0] == "Queue Box Display Delay")
-                buttonRequestSpawn.displayDelay = Convert.ToSingle(columns[1]);
-            if (columns[0] == "Seconds from Queue Box to Collin")
-                buttonRequestSpawn.secondsFromQueueBoxToCollin = Convert.ToSingle(columns[1]);
-        }
+        // if (!buttonRequestSpawn) return;
+        // var lines = csv.Split('\n');
+        // foreach (var line in lines)
+        // {
+        //     var columns = line.Split(',');
+        //     if (columns[0] == "Seconds from Bad Guy to Queue Box")
+        //         buttonRequestSpawn.secondsFromBadGuyToQueueBox = Convert.ToSingle(columns[1]);
+        //     if (columns[0] == "Queue Box Display Delay")
+        //         buttonRequestSpawn.displayDelay = Convert.ToSingle(columns[1]);
+        //     if (columns[0] == "Seconds from Queue Box to Collin")
+        //         buttonRequestSpawn.secondsFromQueueBoxToCollin = Convert.ToSingle(columns[1]);
+        // }
     }
     
     private void GetLevelText(GstuSpreadSheet spreadsheet)
