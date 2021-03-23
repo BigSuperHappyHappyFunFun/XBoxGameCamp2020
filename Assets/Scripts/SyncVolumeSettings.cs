@@ -13,6 +13,6 @@ public class SyncVolumeSettings : MonoBehaviour
 
     private void Update()
     {
-        source.volume = volume * settings.volume;
+        source.volume = volume * settings.Volume;
     }
 }

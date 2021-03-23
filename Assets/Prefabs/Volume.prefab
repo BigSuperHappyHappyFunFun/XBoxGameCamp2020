@@ -304,6 +304,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 15c82c8fd02dd204ab8558bd19910bbf, type: 2}
   slider: {fileID: 8759433663834448189}
+  isMute: 0
+  speakerButton: {fileID: 0}
+  speakerMuteImage: {fileID: 21300000, guid: 9025608fde199c04aad0b46a243635ad, type: 3}
+  speakerImage: {fileID: 0}
 --- !u!1 &8759433662831557253
 GameObject:
   m_ObjectHideFlags: 0
