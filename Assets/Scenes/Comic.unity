@@ -228,7 +228,7 @@ MonoBehaviour:
   prevButton: {fileID: 1290840249}
   nextButton: {fileID: 629258274}
   virtualCamera: {fileID: 594042724}
-  ortographicSize: 1.5
+  ortographicSize: 0.9
   speed: 2
   frame: 0
   frameCount: 6
@@ -1249,7 +1249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081441235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.958, y: -0, z: 0}
+  m_LocalPosition: {x: -1.958, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 85048351}
@@ -1705,7 +1705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686488124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.95, y: 3.49, z: 0}
+  m_LocalPosition: {x: 1.95, y: 3.505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 85048351}
