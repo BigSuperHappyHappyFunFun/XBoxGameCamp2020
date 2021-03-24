@@ -42,8 +42,8 @@ public class Comic : MonoBehaviour
         prevButton.gameObject.SetActive(true);
         frame++;
         virtualCamera.Follow = transform.GetChild(frame);
-        if (frame == 1) animation2.Play(PlayMode.StopAll);
-        if (frame == 3) animation4.Play(PlayMode.StopAll);
+        if (frame == 1) animation2.Play();
+        if (frame == 3) animation4.Play();
         if (frame >= frameCount - 1) nextButton.image.color = Color.green;
     }
 
@@ -53,6 +53,8 @@ public class Comic : MonoBehaviour
         nextButton.image.color = Color.white;
         frame--;
         virtualCamera.Follow = transform.GetChild(frame);
+        if (frame == 1) animation2.Play();
+        if (frame == 3) animation4.Play();
         if (frame <= 0) prevButton.gameObject.SetActive(false); ;
     }
 
