@@ -11,6 +11,7 @@ public class LevelData : MonoBehaviour
     [System.Serializable]
     public class ButtonRequest
     {
+        public int id;
         public string name;
         public float time;
         public string button;
@@ -103,6 +104,7 @@ public class LevelData : MonoBehaviour
             var buttonRequest = new ButtonRequest();
             try
             {
+                buttonRequest.id = i;
                 buttonRequest.time = Convert.ToSingle(buttonRequestStrings[0]);
                 buttonRequest.button = buttonRequestStrings[1];
                 buttonRequest.name = $"Button {buttonRequest.button} @ {buttonRequest.time}";

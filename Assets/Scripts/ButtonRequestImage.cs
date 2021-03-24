@@ -9,10 +9,10 @@ public class ButtonRequestImage : MonoBehaviour
 
     private void OnEnable()
     {
-        upArrow?.SetActive(false);
-        downArrow?.SetActive(false);
-        leftArrow?.SetActive(false);
-        rightArrow?.SetActive(false);
+        // upArrow?.SetActive(false);
+        // downArrow?.SetActive(false);
+        // leftArrow?.SetActive(false);
+        // rightArrow?.SetActive(false);
     }
 
     public void ShowArrow(string direction)

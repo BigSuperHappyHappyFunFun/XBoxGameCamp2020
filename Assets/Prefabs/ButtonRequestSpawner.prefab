@@ -232,19 +232,12 @@ MonoBehaviour:
   inputChecker: {fileID: 2056558645}
   padding: 2
   scaleSpeed: 6
-  notes: []
-  currentCombo:
-    start: 0
-    end: 0
-    buttonRequests: []
-  startTime: 0
-  scaleFactor: 6.25
-  comboDuration: 0
-  buttonRequestPrefab: {fileID: 4651970213961274403, guid: 76079cd0715aa254f892544641a4ab06, type: 3}
-  secondsFromBadGuyToQueueBox: 0.5
-  secondsFromQueueBoxToCollin: 3
-  displayDelay: 1
+  secondsFromQueueBoxToCollin: 4
+  displayDelay: 2
+  secondsAfterTarget: 2
+  secondFromBadGuyToQueueBox: 1
   combos: []
+  alreadyAdded: []
 --- !u!1 &1914274987639440665
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelData: {fileID: 0}
   time: 0
+  buttonRequestGameObjects: []
+  buttonRequestPrefab: {fileID: 4651970213961274403, guid: 76079cd0715aa254f892544641a4ab06, type: 3}
 --- !u!1 &1914274989211887166
 GameObject:
   m_ObjectHideFlags: 0
