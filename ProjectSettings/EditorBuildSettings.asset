@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HTML5.unity
     guid: 4beaafd5d4d500648ad452fba2530856
   - enabled: 1
+    path: Assets/Scenes/XBoxGameCampLogo.unity
+    guid: c70a999b9b6046242a387be8caf5a859
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 4dc894cafc1d24843bf0d1b431ba7e7f
   - enabled: 1
