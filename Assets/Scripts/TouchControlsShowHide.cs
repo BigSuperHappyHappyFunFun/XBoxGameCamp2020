@@ -10,6 +10,6 @@ public class TouchControlsShowHide : MonoBehaviour
     private void Update()
     {
         foreach (var button in touchControlButtons)
-            button.SetActive(gameSettings.showTouchControls);
+            button.SetActive(gameSettings.TouchControl);
     }
 }

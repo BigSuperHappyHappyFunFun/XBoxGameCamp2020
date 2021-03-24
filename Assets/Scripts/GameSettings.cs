@@ -8,9 +8,11 @@ public class GameSettings : ScriptableObject
     public int minorVersion = 0;
     public int microVersion = 0;
     [SerializeField] private float _volume;
-    internal bool showTouchControls;
-
+    public bool showTouchControls;
+    public bool detectTouchControls;
+    
     public string Version => $"{majorVersion}.{minorVersion}.{microVersion}";
+    public bool TouchControl => showTouchControls || detectTouchControls;
     public bool IsMute { get; set; }
 
     public float Volume
