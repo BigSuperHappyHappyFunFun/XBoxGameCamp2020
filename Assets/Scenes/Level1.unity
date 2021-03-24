@@ -836,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 6.000545
+      value: 6.0027347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
@@ -1001,6 +1001,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1225653103}
+    - target: {fileID: 7311847128113748541, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311847128501882989, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311847128537175987, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311847128848374567, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7675831286456624182, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
       propertyPath: inputChecker
       value: 
