@@ -30,7 +30,6 @@ public class NextLevelButton : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Level1") SceneManager.LoadScene("Level2");
         if (SceneManager.GetActiveScene().name == "Level2") SceneManager.LoadScene("Level3");
-        if (SceneManager.GetActiveScene().name == "Level3") SceneManager.LoadScene("Level4");
-        if (SceneManager.GetActiveScene().name == "Level4") SceneManager.LoadScene("Menu");
+        if (SceneManager.GetActiveScene().name == "Level3") SceneManager.LoadScene("Ending");
     }
 }
