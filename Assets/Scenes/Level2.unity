@@ -784,6 +784,10 @@ PrefabInstance:
       propertyPath: levelData
       value: 
       objectReference: {fileID: 815151571}
+    - target: {fileID: 1914274988589190073, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: scaleFactor
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_Name
       value: Button Request Spawner
@@ -1681,6 +1685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crowd
       objectReference: {fileID: 0}
+    - target: {fileID: 5517600084037869591, guid: 25c2e8fc9c02db1428e3fe085a9931f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25c2e8fc9c02db1428e3fe085a9931f7, type: 3}
 --- !u!1001 &6205519418238574381
@@ -1740,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 5.997037
+      value: 6.0027347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
@@ -1820,7 +1828,7 @@ PrefabInstance:
     - target: {fileID: 7549962642142190970, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 935a6fb093a7b7c4ebd452a070c674de, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f6159566eb7e04b83a6c64aa97a758, type: 3}
     - target: {fileID: 7549962642142190970, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_Color.r
       value: 0.6981132

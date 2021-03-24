@@ -16,6 +16,8 @@ public class Comic : MonoBehaviour
     public float speed = 1;
     public int frame = 0;
     public int frameCount = 6;
+    public Animation animation2;
+    public Animation animation4;
 
     private void OnEnable()
     {
@@ -40,6 +42,8 @@ public class Comic : MonoBehaviour
         prevButton.gameObject.SetActive(true);
         frame++;
         virtualCamera.Follow = transform.GetChild(frame);
+        if (frame == 1) animation2.Play(PlayMode.StopAll);
+        if (frame == 3) animation4.Play(PlayMode.StopAll);
         if (frame >= frameCount - 1) nextButton.image.color = Color.green;
     }
 

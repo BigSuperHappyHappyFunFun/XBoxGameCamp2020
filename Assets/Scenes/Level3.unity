@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: levelData
       value: 
       objectReference: {fileID: 815151571}
+    - target: {fileID: 1914274988589190073, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
+      propertyPath: scaleFactor
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_Name
       value: Button Request Spawner
@@ -1588,7 +1592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5517600084037869590, guid: 25c2e8fc9c02db1428e3fe085a9931f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.92
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 5517600084037869590, guid: 25c2e8fc9c02db1428e3fe085a9931f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1694,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 6.0009937
+      value: 6.000545
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
@@ -1769,7 +1773,7 @@ PrefabInstance:
     - target: {fileID: 7549962642142190970, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 63b816084638a75409e9addd9844039d, type: 3}
+      objectReference: {fileID: 21300000, guid: e3bf3e4a645cfae4481e15b4fe7fbb4d, type: 3}
     - target: {fileID: 7549962642142190970, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_Color.r
       value: 1
@@ -1788,7 +1792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7549962642142190971, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: -1.26
       objectReference: {fileID: 0}
     - target: {fileID: 7549962642142190971, guid: 1c7395bfa95ec954d89d48bf7624afff, type: 3}
       propertyPath: m_LocalPosition.z

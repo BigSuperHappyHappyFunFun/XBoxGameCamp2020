@@ -9,6 +9,7 @@ public class ButtonRequestSpawn : MonoBehaviour
     private QueueBox _queueBox;
     public List<GameObject> buttonRequestGameObjects = new List<GameObject>();
     public GameObject buttonRequestPrefab;
+    public float scaleFactor = 2;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class ButtonRequestSpawn : MonoBehaviour
                 new List<LevelData.ButtonRequest>(levelData.buttonRequests.Where(x => x.combo == comboLabel));
             combo.start = combo.buttonRequests.Min(x => x.time);
             combo.end = combo.buttonRequests.Max(x => x.time);
+            combo.scaleFactor = scaleFactor;
             combos.Add(combo);
         }
 
