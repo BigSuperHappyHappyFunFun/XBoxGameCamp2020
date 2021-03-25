@@ -6,8 +6,9 @@ public class MoveTowards : MonoBehaviour
 {
     public Vector3 target;
     public float time;
-    public List<Target> targets = new List<Target>();
     private ButtonRequestSpawn _buttonRequestSpawn;
+    public float timeX = -1;
+    public float posX;
 
     public float GameTime => _buttonRequestSpawn ? _buttonRequestSpawn.time : Time.time;
 
@@ -18,36 +19,46 @@ public class MoveTowards : MonoBehaviour
 
     private void Update()
     {
-        if (targets.Count > 0)
-        {
-            target = targets[0].target;
-            time = targets[0].time;
-            var myPosition = transform.position;
-            var distance = Vector3.Distance(myPosition, target);
-            var deltaTime = Mathf.Clamp(time - GameTime, 0, 10000);
-            if (deltaTime == 0) return;
-            var speed = distance / deltaTime;
-            transform.position = Vector3.MoveTowards(myPosition, target, speed * Time.deltaTime);
-            if (myPosition == target)
-                targets.RemoveAt(0);
-        }
+        var myPosition = UpdateTargetYZ();
+        UpdateTargetX(myPosition);
     }
 
-    public void AddTarget(Vector3 target, float time)
+    private Vector3 UpdateTargetYZ()
     {
-        targets.Add(new Target {target = target, time = time});
+        var myPosition = transform.position;
+        var targetYZ = target;
+        targetYZ.x = myPosition.x;
+        var distance = Vector3.Distance(myPosition, targetYZ);
+        var deltaTime = Mathf.Clamp(time - GameTime, 0, 10000);
+        if (deltaTime == 0) return myPosition;
+        var speed = distance / deltaTime;
+        myPosition = Vector3.MoveTowards(myPosition, targetYZ, speed * Time.deltaTime);
+        transform.position = myPosition;
+        return myPosition;
     }
-    
+
+    private void UpdateTargetX(Vector3 myPosition)
+    {
+        var targetX = myPosition;
+        targetX.x = posX;
+        var distanceX = Mathf.Abs(targetX.x - myPosition.x);
+        var deltaTimeX = Mathf.Clamp(timeX - GameTime, 0, 10000);
+        if (deltaTimeX == 0) return;
+        var speedX = distanceX / deltaTimeX;
+        transform.position = Vector3.MoveTowards(myPosition, targetX, speedX * Time.deltaTime);
+    }
+
     public void SetTarget(Vector3 target, float time)
     {
-        targets.Clear();
-        targets.Add(new Target {target = target, time = time});
+        this.target = target;
+        this.time = time;
+        timeX = time;
+        posX = target.x;
     }
 
-    [Serializable]
-    public class Target
+    public void SetTargetX(float posX, float timeX)
     {
-        public Vector3 target;
-        public float time;
+        this.timeX = timeX;
+        this.posX = posX;
     }
 }

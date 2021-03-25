@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 815151571}
     - target: {fileID: 1914274988589190073, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: scaleFactor
-      value: 4.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1914274988589190086, guid: 3971e8995e8e9ba40ab202bae94205d0, type: 3}
       propertyPath: m_Name
@@ -1540,6 +1540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5235784987024851372, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 3f6b7236971490a4192f63c2c22b5726, type: 2}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.07
@@ -1551,7 +1555,11 @@ PrefabInstance:
     - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 353d7e83e151edd4589518631786d825, type: 3}
+      objectReference: {fileID: 21300000, guid: 76835233037603242bc866ab437a2789, type: 3}
+    - target: {fileID: 5235784987024851375, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_Name
+      value: Chicken
+      objectReference: {fileID: 0}
     - target: {fileID: 5235784988634473328, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1748,7 +1756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 6.0027347
+      value: 5.997484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}

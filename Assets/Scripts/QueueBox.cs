@@ -47,14 +47,15 @@ public class QueueBox : MonoBehaviour
 
     private void UpdateSize(Combo combo)
     {
-        var start = combo.start - secondsFromQueueBoxToCollin - displayDelay - combo.Duration - secondFromBadGuyToQueueBox;
+        var start = combo.start - secondsFromQueueBoxToCollin - displayDelay - combo.Duration -
+                    secondFromBadGuyToQueueBox;
         var end = combo.end - secondsFromQueueBoxToCollin - displayDelay - combo.Duration;
         var localTime = GameTime - start;
         var timeScale = combo.Duration / (end - start);
         localTime *= timeScale;
         localTime = Mathf.Clamp(localTime, 0, combo.Duration);
         var t = localTime / combo.Duration;
-        _scaleTowards.SetTarget(Scale.SetX(t * combo.Width), scaleSpeed);
+        _scaleTowards.SetTarget(Scale.SetX(t * combo.Width + padding), scaleSpeed);
     }
 
     private void CreateNewNotes()
@@ -69,10 +70,13 @@ public class QueueBox : MonoBehaviour
             createTime -= secondFromBadGuyToQueueBox;
             if (GameTime < createTime) continue;
             if (GameTime >= buttonRequest.time + secondsAfterTarget) continue;
-            buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id].SetActive(true);
-            if (alreadyAdded.Contains(buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id])) continue;
-            inputChecker.buttonRequests.Add(buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id]);
-            alreadyAdded.Add(buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id]);
+            var buttonRequestGameObject = buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id];
+            buttonRequestGameObject.SetActive(true);
+            if (alreadyAdded.Contains(buttonRequestGameObject)) continue;
+            inputChecker.buttonRequests.Add(buttonRequestGameObject);
+            alreadyAdded.Add(buttonRequestGameObject);
+            var moveTowards = buttonRequestGameObject.GetComponent<MoveTowards>();
+            moveTowards.SetTarget(transform.position, GameTime + secondFromBadGuyToQueueBox);
         }
     }
 
@@ -84,17 +88,15 @@ public class QueueBox : MonoBehaviour
                 buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id].SetActive(false);
             else if (GameTime >= buttonRequest.time)
                 buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id].GetComponent<MoveTowards>()
-                    .SetTarget(Target2, buttonRequest.time + secondsAfterTarget);
+                    .SetTargetX(Target2.x, buttonRequest.time + secondsAfterTarget);
             else if (GameTime >= buttonRequest.time - secondsFromQueueBoxToCollin)
                 buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id].GetComponent<MoveTowards>()
-                    .SetTarget(Target, buttonRequest.time);
+                    .SetTargetX(Target.x, buttonRequest.time);
             else
             {
                 var gameTime = GameTime;
-                if (GameTime < buttonRequest.time - secondsFromQueueBoxToCollin - displayDelay -
-                    (combo.end - buttonRequest.time))
-                    gameTime = buttonRequest.time - secondsFromQueueBoxToCollin - displayDelay -
-                               (combo.end - buttonRequest.time);
+                if (GameTime < buttonRequest.time - secondsFromQueueBoxToCollin - displayDelay)
+                    gameTime = buttonRequest.time - secondsFromQueueBoxToCollin - displayDelay;
                 var buttonRequestGameObject = buttonRequestSpawn.buttonRequestGameObjects[buttonRequest.id];
                 var buttonRequestMoveTowards = buttonRequestGameObject.GetComponent<MoveTowards>();
                 var timeAfterStart = buttonRequest.time - combo.start;
@@ -103,11 +105,10 @@ public class QueueBox : MonoBehaviour
                 comboTime = Mathf.Clamp(comboTime, 0, combo.Duration);
                 var comboT = comboTime / combo.Duration;
                 var boxSize = comboT * combo.Width;
-                boxSize -= padding;
                 var boxTarget = transform.position;
                 boxTarget += Vector3.right * (normalizedTimeAfterStart * boxSize);
-                boxTarget -= Vector3.right * boxSize / 2;
-                buttonRequestMoveTowards.SetTarget(boxTarget, gameTime);
+                boxTarget += Vector3.left * boxSize / 2;
+                buttonRequestMoveTowards.SetTargetX(boxTarget.x, gameTime);
             }
 
         // for (var i = combos.Count - 1; i >= 0; i--)
@@ -120,7 +121,8 @@ public class QueueBox : MonoBehaviour
         if (!HaveCombos) return null;
         foreach (var combo in combos)
         {
-            var start = combo.start - secondsFromQueueBoxToCollin - displayDelay - combo.Duration - secondFromBadGuyToQueueBox;
+            var start = combo.start - secondsFromQueueBoxToCollin - displayDelay - combo.Duration -
+                        secondFromBadGuyToQueueBox;
             var end = combo.end - secondsFromQueueBoxToCollin;
             if (start <= GameTime && GameTime <= end)
                 return combo;

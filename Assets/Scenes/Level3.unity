@@ -1449,13 +1449,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5235784987024851372, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 9c3369a1ae502294ebb08d9946035ea3, type: 2}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.5000001
       objectReference: {fileID: 0}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalScale.z
@@ -1463,16 +1467,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.09
+      value: 6.19
       objectReference: {fileID: 0}
     - target: {fileID: 5235784987024851373, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.84
+      value: -8.12
       objectReference: {fileID: 0}
     - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 84ff94ba1450653409b0965034faef3d, type: 3}
+      objectReference: {fileID: 21300000, guid: afcee13d25b17604583867afb8658297, type: 3}
+    - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235784987024851374, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5235784987024851375, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
+      propertyPath: m_Name
+      value: Tomato
+      objectReference: {fileID: 0}
     - target: {fileID: 5235784988322429738, guid: 486a0f5bc3d53394d9f1b8d2f281c491, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1698,7 +1722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 6.0027347
+      value: 5.997484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}

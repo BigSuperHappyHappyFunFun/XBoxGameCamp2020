@@ -230,12 +230,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonRequestSpawn: {fileID: 1914274988589190073}
   inputChecker: {fileID: 2056558645}
-  padding: 2
+  padding: 1.5
   scaleSpeed: 6
-  secondsFromQueueBoxToCollin: 4
-  displayDelay: 2
-  secondsAfterTarget: 2
-  secondFromBadGuyToQueueBox: 1
+  secondsFromQueueBoxToCollin: 3
+  displayDelay: 1.5
+  secondsAfterTarget: 1.5
+  secondFromBadGuyToQueueBox: 0.4
   combos: []
   alreadyAdded: []
 --- !u!1 &1914274987639440665
@@ -425,6 +425,8 @@ MonoBehaviour:
   time: 0
   buttonRequestGameObjects: []
   buttonRequestPrefab: {fileID: 4651970213961274403, guid: 76079cd0715aa254f892544641a4ab06, type: 3}
+  scaleFactor: 6
+  song: {fileID: 0}
 --- !u!1 &1914274989211887166
 GameObject:
   m_ObjectHideFlags: 0
