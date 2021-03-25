@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Comic : MonoBehaviour
 {
+    const float SIXTEEN_NINE = 16f / 9f;
+    
     public string nextScene;
     public Button prevButton;
     public Button nextButton;
@@ -66,6 +68,8 @@ public class Comic : MonoBehaviour
     private void Update()
     {
         ZoomToFrame();
+        var ratio = (float)Screen.width / Screen.height / SIXTEEN_NINE;
+        ortographicSize = 0.9f / ratio;
     }
 
     private void ZoomToFrame()
