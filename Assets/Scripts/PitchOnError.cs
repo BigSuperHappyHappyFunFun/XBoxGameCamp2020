@@ -15,6 +15,7 @@ public class PitchOnError : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.Failed.Add(ChangePitch);
+        mixer.SetFloat("SongPitchShifter", 1);
     }
 
     private void OnDisable()

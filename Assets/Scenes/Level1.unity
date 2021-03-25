@@ -424,6 +424,10 @@ PrefabInstance:
       propertyPath: input
       value: 
       objectReference: {fileID: 649355873}
+    - target: {fileID: 1680396898253729089, guid: 796d41a49692ac04488e150b43704759, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1680396898253729090, guid: 796d41a49692ac04488e150b43704759, type: 3}
       propertyPath: m_Name
       value: ArrowRecorder
@@ -836,7 +840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 6.0027347
+      value: 4.638132
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}

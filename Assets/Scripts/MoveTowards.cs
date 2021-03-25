@@ -25,6 +25,7 @@ public class MoveTowards : MonoBehaviour
             var myPosition = transform.position;
             var distance = Vector3.Distance(myPosition, target);
             var deltaTime = Mathf.Clamp(time - GameTime, 0, 10000);
+            if (deltaTime == 0) return;
             var speed = distance / deltaTime;
             transform.position = Vector3.MoveTowards(myPosition, target, speed * Time.deltaTime);
             if (myPosition == target)

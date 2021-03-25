@@ -10,6 +10,7 @@ public class ButtonRequestSpawn : MonoBehaviour
     public List<GameObject> buttonRequestGameObjects = new List<GameObject>();
     public GameObject buttonRequestPrefab;
     public float scaleFactor = 2;
+    public AudioSource song;
 
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class ButtonRequestSpawn : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
+        if (!song) song = FindObjectsOfType<AudioSource>(true).FirstOrDefault(x => x.name == "Song");
+        if (song) time = song.time;
     }
 
     private List<Combo> CreateCombos()
