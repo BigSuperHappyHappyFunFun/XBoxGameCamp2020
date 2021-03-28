@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GoogleSheetsToUnity.Utils;
 using GreenerGames;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace GoogleSheetsToUnity
@@ -17,7 +16,7 @@ namespace GoogleSheetsToUnity
         public readonly string worksheetName = "Sheet1";
 
         public readonly string startCell = "A1";
-        public readonly string endCell = "Z200";
+        public readonly string endCell = "Z250";
 
         public readonly string titleColumn = "A";
         public readonly int titleRow = 1;
