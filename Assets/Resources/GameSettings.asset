@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   majorVersion: 0
   minorVersion: 0
-  microVersion: 21
+  microVersion: 22
   _volume: 0.22452618
   showTouchControls: 1
   detectTouchControls: 0
