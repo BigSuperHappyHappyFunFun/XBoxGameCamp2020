@@ -15,6 +15,6 @@ MonoBehaviour:
   majorVersion: 0
   minorVersion: 0
   microVersion: 23
-  _volume: 0.22452618
-  showTouchControls: 1
+  _volume: 0.25
+  showTouchControls: 0
   detectTouchControls: 0

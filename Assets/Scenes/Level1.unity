@@ -133,6 +133,19 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3335614388775224299, guid: 425135476c4ab7e43bae7f53bee6b4f3, type: 3}
   m_PrefabInstance: {fileID: 3335614388633565856}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &143554895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143554890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15efda483bc5024396720397c08e1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime: 0
 --- !u!1 &239580424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7675831287846961554, guid: 6aea2ca01046fcd43b17d5abf2467e9a, type: 3}
@@ -840,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: orthographic size
-      value: 5.997484
+      value: 5.997406
       objectReference: {fileID: 0}
     - target: {fileID: 6205519417458585438, guid: a3ee069f25e2e224e8e504dbfc7e5814, type: 3}
       propertyPath: m_BackGroundColor.r
